@@ -10,7 +10,7 @@ export const useGitHubQuery = (): any => {
   const [isLoading, setIsLoading] = useState<boolean>(false);
 
   useEffect(() => {
-    if (!session?.user) return;
+    if (!session?.user || !!data) return;
 
     const getData = async () => {
       setIsLoading(true);
@@ -52,6 +52,8 @@ export const useGitHubQuery = (): any => {
     };
 
     getData();
+
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [session]);
 
   return { data, isLoading };
