@@ -1,3 +1,4 @@
+import { GitHubUser } from "@/types/session";
 import NextAuth from "next-auth";
 import GithubProvider from "next-auth/providers/github";
 
@@ -12,7 +13,7 @@ export default NextAuth({
           name: profile.name ?? profile.login,
           image: profile.avatar_url,
           login: profile.login,
-        };
+        } as GitHubUser;
       },
     }),
   ],
@@ -33,6 +34,7 @@ export default NextAuth({
         ...session,
         user: token.user,
         accessToken: token.accessToken,
+        mario: 1,
       };
     },
   },

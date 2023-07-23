@@ -3,7 +3,7 @@ import Image from "next/image";
 import Link from "next/link";
 
 export default function Header() {
-  const { data: session } = useSession();
+  const { data: session, status } = useSession();
 
   return (
     <>
@@ -34,9 +34,11 @@ export default function Header() {
                 <li>
                   <Link href="/">Home</Link>
                 </li>
-                <li>
-                  <Link href="/stats">Stats</Link>
-                </li>
+                {status === "authenticated" && (
+                  <li>
+                    <Link href="/stats">Stats</Link>
+                  </li>
+                )}
               </ul>
             </div>
             <Link href="/" className="btn btn-ghost normal-case text-xl">
@@ -48,19 +50,21 @@ export default function Header() {
               <li>
                 <Link href="/">Home</Link>
               </li>
-              <li>
-                <Link href="/stats">Stats</Link>
-              </li>
+              {status === "authenticated" && (
+                <li>
+                  <Link href="/stats">Stats</Link>
+                </li>
+              )}
             </ul>
           </div>
           <div className="navbar-end">
-            {session ? (
+            {status === "authenticated" ? (
               <div className="dropdown dropdown-end">
                 <label tabIndex={0} className="btn btn-ghost btn-circle avatar">
                   <div className="w-10 rounded-full">
                     <Image
-                      src={session.user?.image ?? ""}
-                      alt={session.user?.name ?? ""}
+                      src={session.user.image ?? ""}
+                      alt={session.user.name ?? ""}
                       width={40}
                       height={40}
                     />

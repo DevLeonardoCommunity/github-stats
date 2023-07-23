@@ -4,13 +4,13 @@ import { Octokit } from "octokit";
 import { useEffect, useState } from "react";
 
 export const useGitHubQuery = (): any => {
-  const { data: session }: any = useSession();
+  const { data: session, status } = useSession();
 
   const [data, setData] = useState<any>();
   const [isLoading, setIsLoading] = useState<boolean>(false);
 
   useEffect(() => {
-    if (!session?.user || !!data) return;
+    if (status !== "authenticated" || !!data) return;
 
     const getData = async () => {
       setIsLoading(true);
