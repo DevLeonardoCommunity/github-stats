@@ -1,0 +1,272 @@
+{
+  "user": {
+    "login": "Balastrong",
+    "avatarUrl": "https://avatars.githubusercontent.com/u/7253929?v=4",
+    "contributionsCollection": {
+      "pullRequestContributionsByRepository": [
+        {
+          "repository": {
+            "name": "wrand",
+            "description": "🎲 Extract one or more random elements from a weighted array (aka loot table or gacha)",
+            "owner": {
+              "login": "Balastrong"
+            }
+          },
+          "contributions": {
+            "totalCount": 11,
+            "nodes": [
+              {
+                "pullRequest": {
+                  "state": "CLOSED",
+                  "title": "Add new Random Type"
+                }
+              },
+              {
+                "pullRequest": {
+                  "state": "CLOSED",
+                  "title": "feat: add new random type"
+                }
+              },
+              {
+                "pullRequest": {
+                  "state": "MERGED",
+                  "title": "chore: split actions"
+                }
+              },
+              {
+                "pullRequest": {
+                  "state": "MERGED",
+                  "title": "fix: prettier path"
+                }
+              },
+              {
+                "pullRequest": {
+                  "state": "MERGED",
+                  "title": "feat: remove items when picked"
+                }
+              },
+              {
+                "pullRequest": {
+                  "state": "MERGED",
+                  "title": "fix: build and bump version"
+                }
+              },
+              {
+                "pullRequest": {
+                  "state": "MERGED",
+                  "title": "chore: Bump to version 1.0.3"
+                }
+              },
+              {
+                "pullRequest": {
+                  "state": "MERGED",
+                  "title": "feat: Add custom random"
+                }
+              },
+              {
+                "pullRequest": {
+                  "state": "MERGED",
+                  "title": "feat: Improved error messages with reference to why and what went wrong"
+                }
+              },
+              {
+                "pullRequest": {
+                  "state": "MERGED",
+                  "title": "feat: Add coverage action"
+                }
+              },
+              {
+                "pullRequest": {
+                  "state": "MERGED",
+                  "title": "chore: Improved ci & added badges"
+                }
+              }
+            ]
+          }
+        },
+        {
+          "repository": {
+            "name": "chess-stats-action",
+            "description": "♟️ Automatically update your README.md with Chess.com games and stats - fully customizable",
+            "owner": {
+              "login": "Balastrong"
+            }
+          },
+          "contributions": {
+            "totalCount": 6,
+            "nodes": [
+              {
+                "pullRequest": {
+                  "state": "MERGED",
+                  "title": "feat: add User-Agent header to get access after the new chess.com api policies"
+                }
+              },
+              {
+                "pullRequest": {
+                  "state": "MERGED",
+                  "title": "test: reorganize tests and add coverage"
+                }
+              },
+              {
+                "pullRequest": {
+                  "state": "MERGED",
+                  "title": "fix: username is now lowercase as the api fails otherwise"
+                }
+              },
+              {
+                "pullRequest": {
+                  "state": "MERGED",
+                  "title": "Fix: add optional typing"
+                }
+              },
+              {
+                "pullRequest": {
+                  "state": "MERGED",
+                  "title": "Refactor and getting ready for release v2"
+                }
+              },
+              {
+                "pullRequest": {
+                  "state": "MERGED",
+                  "title": "Improved docs and actions"
+                }
+              }
+            ]
+          }
+        },
+        {
+          "repository": {
+            "name": "qwik-ui",
+            "description": "Qwik UI Components",
+            "owner": {
+              "login": "qwikifiers"
+            }
+          },
+          "contributions": {
+            "totalCount": 6,
+            "nodes": [
+              {
+                "pullRequest": {
+                  "state": "MERGED",
+                  "title": "feat: add daisy slider component"
+                }
+              },
+              {
+                "pullRequest": {
+                  "state": "MERGED",
+                  "title": "fix(accordion): removed duplicate class in Accordion"
+                }
+              },
+              {
+                "pullRequest": {
+                  "state": "MERGED",
+                  "title": "docs(coding standards): define a coding standard for exposing components' props"
+                }
+              },
+              {
+                "pullRequest": {
+                  "state": "MERGED",
+                  "title": "docs(daisy popover): replace Box component instead of Header in daisy popover demo"
+                }
+              },
+              {
+                "pullRequest": {
+                  "state": "MERGED",
+                  "title": "docs(coding standards): add missing space in header"
+                }
+              },
+              {
+                "pullRequest": {
+                  "state": "MERGED",
+                  "title": "fix(rating): add useId as key for each RatingIcon"
+                }
+              }
+            ]
+          }
+        },
+        {
+          "repository": {
+            "name": "trello-card-numbers-plus",
+            "description": "1️⃣ Show Trello card numbers with a fully customizable Chrome extension",
+            "owner": {
+              "login": "Balastrong"
+            }
+          },
+          "contributions": {
+            "totalCount": 5,
+            "nodes": [
+              {
+                "pullRequest": {
+                  "state": "MERGED",
+                  "title": "feat: improve refresh trigger"
+                }
+              },
+              {
+                "pullRequest": {
+                  "state": "MERGED",
+                  "title": "feat: pre release improvements 1.1.0"
+                }
+              },
+              {
+                "pullRequest": {
+                  "state": "MERGED",
+                  "title": "feat: Add blacklist toggle button and tooltip"
+                }
+              },
+              {
+                "pullRequest": {
+                  "state": "MERGED",
+                  "title": "feat: blacklist handle multiple boards"
+                }
+              },
+              {
+                "pullRequest": {
+                  "state": "MERGED",
+                  "title": "feat: Implemented blacklist feature"
+                }
+              }
+            ]
+          }
+        },
+        {
+          "repository": {
+            "name": "vscode-pull-request-github",
+            "description": "GitHub Pull Requests for Visual Studio Code",
+            "owner": {
+              "login": "microsoft"
+            }
+          },
+          "contributions": {
+            "totalCount": 4,
+            "nodes": [
+              {
+                "pullRequest": {
+                  "state": "MERGED",
+                  "title": "Change file mode for execute husky hook on MacOS"
+                }
+              },
+              {
+                "pullRequest": {
+                  "state": "MERGED",
+                  "title": "Add x button to remove a label from a new PR"
+                }
+              },
+              {
+                "pullRequest": {
+                  "state": "MERGED",
+                  "title": "Allow empty array to be pushed to remove the last label"
+                }
+              },
+              {
+                "pullRequest": {
+                  "state": "MERGED",
+                  "title": "Allow empty labels array to be pushed to set-labels to remove all of them"
+                }
+              }
+            ]
+          }
+        }
+      ]
+    }
+  }
+}

@@ -2,6 +2,8 @@ import type { GraphQlQueryResponseData } from "@octokit/graphql";
 import { useSession } from "next-auth/react";
 import { Octokit } from "octokit";
 import { useEffect, useState } from "react";
+import { RepoData } from "../graphql";
+import contribs from "../mocks/contribs.json";
 
 export const useGitHubQuery = (): any => {
   const { data: session, status } = useSession();
@@ -18,26 +20,32 @@ export const useGitHubQuery = (): any => {
         auth: session.accessToken,
       });
 
+      if (process.env.NEXT_PUBLIC_MOCK_API) {
+        setData(contribs);
+        setIsLoading(false);
+        return;
+      }
+
       const { user: result } = await gh.graphql<GraphQlQueryResponseData>({
-        query: `query ($login: String!) {
+        query: `
+        ${RepoData}
+        query ($login: String!) {
             user(login: $login) {
               login
               avatarUrl
               contributionsCollection {
-                commitContributionsByRepository(maxRepositories: 50) {
+                pullRequestContributionsByRepository(maxRepositories: 5) {
                   repository {
-                    name
+                    ...RepoData
                   }
-                  contributions(orderBy: {field: COMMIT_COUNT, direction: DESC}) {
+                  contributions(first: 50) {
                     totalCount
-                  }
-                }
-                issueContributionsByRepository(maxRepositories: 50) {
-                  repository {
-                    name
-                  }
-                  contributions(orderBy: {direction: DESC}) {
-                    totalCount
+                    nodes {
+                      pullRequest {
+                        state
+                        title
+                      }
+                    }
                   }
                 }
               }
@@ -46,6 +54,8 @@ export const useGitHubQuery = (): any => {
           `,
         login: session.user.login,
       });
+
+      console.log(result);
 
       setData(result);
       setIsLoading(false);
