@@ -7,7 +7,7 @@ export default function Stats() {
   console.log(ghStats);
   return (
     <div>
-      {ghStats?.user?.contributionsCollection?.pullRequestContributionsByRepository.map(
+      {ghStats?.contributionsCollection?.pullRequestContributionsByRepository.map(
         ({ repository, contributions: { totalCount, nodes } }: any) => (
           <div className="collapse bg-base-200" key={repository.name}>
             <input type="checkbox" />
