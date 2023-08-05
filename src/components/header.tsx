@@ -86,7 +86,7 @@ export default function Header() {
                 </ul>
               </div>
             ) : (
-              <button onClick={() => signIn()} className="btn">
+              <button onClick={() => signIn("github")} className="btn">
                 Sign in
               </button>
             )}
