@@ -17,7 +17,7 @@ export default function Stats() {
         <h1 className="text-3xl text-center">
           {session?.user.name} ({session?.user.login})
         </h1>
-        <div className="join">
+        <div className="join mt-2">
           {new Array(yearsRange).fill(0).map((_, i) => {
             const radioYear = baseYear - yearsRange + i + 1;
             return (

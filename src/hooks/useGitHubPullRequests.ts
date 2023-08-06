@@ -13,7 +13,7 @@ export const useGitHubPullRequests = (year: number) => {
   const { data, isLoading } = useGitHubQuery(pullRequests, params);
 
   const repositories: PullRequestContributionsByRepository[] =
-    data?.contributionsCollection?.pullRequestContributionsByRepository;
+    data?.user?.contributionsCollection?.pullRequestContributionsByRepository;
 
   return { repositories, isLoading };
 };

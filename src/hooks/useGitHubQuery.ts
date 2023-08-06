@@ -1,7 +1,7 @@
 import type { GraphQlQueryResponseData } from "@octokit/graphql";
 import { useSession } from "next-auth/react";
 import { Octokit } from "octokit";
-import { useEffect, useState } from "react";
+import { useQuery } from "react-query";
 
 export const useGitHubQuery = (
   query: string,
@@ -9,33 +9,28 @@ export const useGitHubQuery = (
 ): any => {
   const { data: session, status } = useSession();
 
-  const [data, setData] = useState<any>();
-  const [isLoading, setIsLoading] = useState<boolean>(false);
-
-  useEffect(() => {
+  const fetchData = async () => {
     if (status !== "authenticated") return;
 
-    const getData = async () => {
-      setIsLoading(true);
-      const gh = new Octokit({
-        auth: session.accessToken,
-      });
+    const gh = new Octokit({
+      auth: session.accessToken,
+    });
 
-      const { user: result } = await gh.graphql<GraphQlQueryResponseData>(
-        query,
-        {
-          login: session.user.login,
-          ...parameters,
-        }
-      );
-      setData(result);
-      setIsLoading(false);
-    };
+    return await gh.graphql<GraphQlQueryResponseData>(query, {
+      login: session.user.login,
+      ...parameters,
+    });
+  };
 
-    getData();
+  const queryResult = useQuery({
+    queryKey: ["GitHubQuery", status, parameters],
+    queryFn: fetchData,
+    refetchOnWindowFocus: false,
+    staleTime: 60000,
+  });
 
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [parameters]);
-
-  return { data, isLoading };
+  return {
+    data: queryResult.data,
+    isLoading: queryResult.isLoading || queryResult.isFetching,
+  };
 };
