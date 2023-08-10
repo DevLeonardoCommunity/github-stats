@@ -1,14 +1,10 @@
 import { Inter } from "next/font/google";
 import Head from "next/head";
-import Header from "./header";
+import { Header } from "./Header";
 
 const inter = Inter({ subsets: ["latin"] });
 
-export default function RootLayout({
-  children,
-}: {
-  children: React.ReactNode;
-}) {
+export const RootLayout = ({ children }: { children: React.ReactNode }) => {
   return (
     <>
       <Head>
@@ -18,4 +14,4 @@ export default function RootLayout({
       <main className={inter.className}>{children}</main>
     </>
   );
-}
+};

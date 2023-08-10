@@ -2,7 +2,7 @@ import { signIn, signOut, useSession } from "next-auth/react";
 import Image from "next/image";
 import Link from "next/link";
 
-export default function Header() {
+export const Header = () => {
   const { data: session, status } = useSession();
 
   return (
@@ -95,4 +95,4 @@ export default function Header() {
       </header>
     </>
   );
-}
+};

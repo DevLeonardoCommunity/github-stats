@@ -1,4 +1,4 @@
-import Layout from "@/components/layout";
+import { RootLayout } from "@/components";
 import "@/styles/globals.css";
 import { SessionProvider } from "next-auth/react";
 import { AppProps } from "next/app";
@@ -13,9 +13,9 @@ export default function App({
   return (
     <QueryClientProvider client={queryClient}>
       <SessionProvider session={session}>
-        <Layout>
+        <RootLayout>
           <Component {...pageProps} />
-        </Layout>
+        </RootLayout>
       </SessionProvider>
     </QueryClientProvider>
   );
