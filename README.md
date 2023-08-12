@@ -1,34 +1,33 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# GitHub Stats
 
-## Getting Started
+Your GitHub contributions smartly organized and visualized - showcase meaningful metrics on your CV
 
-First, run the development server:
+## What's this?
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-```
+Before stating whether this tool is useful or not (it might be) let's disclose its primary goal: improving our skills.
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Why our? Because this tool is open source and everyone is more than welcome to contribute to it!
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+You can grab an issue at any time, or join the [Discord](https://discord.gg/bqwyEa6We6) server to discuss the project and its future. Nothing is set in stone, so feel free to share your ideas and suggestions.
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+## Technologies involved
 
-## Learn More
+The app is currently based on [Next.js](https://nextjs.org/) with TypeScript and Tailwind CSS (actually with [DaisyUI](https://daisyui.com/), a Tailwind CSS component library).
 
-To learn more about Next.js, take a look at the following resources:
+We manage some data, specifically from the [GitHub APIs](https://docs.github.com/en/graphql) using the [GraphQL](https://graphql.org/) endpoint and [React Query](https://tanstack.com/query/latest/).
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+There's a login feature with [NextAuth](https://next-auth.js.org/) using GitHub as a provider.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+### Coming soon
 
-## Deploy on Vercel
+The plan is to also add at some point some kind of user profile and settings, stored where? It's up to you to decide! It could be on MongoDB with an ORM like Prisma or something entirely different. A first start could be using localStorage to validate the concept and then decide which database to use.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+Testing will also be involved in the process, not sure if Vitest or Jest for component testing and either Cypress or Playwright for E2E testing.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+## How to contribute?
+
+As mentioned in the beginning, you can grab an isssue (write a comment first!) or join the [Discord](https://discord.gg/bqwyEa6We6) server so we can have a chat about the project.
+
+The goal of this project isn't the outcome itself but rather the process of building it, together! As a resul we'll end up having a nice tool to showcase our GitHub contributions and a project we can use as reference when we need to implement something similar in other projects.
+
+Thanks for reading and happy coding!
