@@ -30,4 +30,6 @@ As mentioned in the beginning, you can grab an isssue (write a comment first!) o
 
 The goal of this project isn't the outcome itself but rather the process of building it, together! As a resul we'll end up having a nice tool to showcase our GitHub contributions and a project we can use as reference when we need to implement something similar in other projects.
 
+Instructions on how to run the app locally can be found in [CONTRIBUTING.md](./CONTRIBUTING.md).
+
 Thanks for reading and happy coding!
