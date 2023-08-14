@@ -26,9 +26,9 @@ Testing will also be involved in the process, not sure if Vitest or Jest for com
 
 ## How to contribute?
 
-As mentioned in the beginning, you can grab an isssue (write a comment first!) or join the [Discord](https://discord.gg/bqwyEa6We6) server so we can have a chat about the project.
+As mentioned in the beginning, you can grab an issue (write a comment first!) or join the [Discord](https://discord.gg/bqwyEa6We6) server so we can have a chat about the project.
 
-The goal of this project isn't the outcome itself but rather the process of building it, together! As a resul we'll end up having a nice tool to showcase our GitHub contributions and a project we can use as reference when we need to implement something similar in other projects.
+The goal of this project isn't the outcome itself but rather the process of building it, together! As a result, we'll end up having a nice tool to showcase our GitHub contributions and a project we can use as a reference when we need to implement something similar in other projects.
 
 Instructions on how to run the app locally can be found in [CONTRIBUTING.md](./CONTRIBUTING.md).
 
