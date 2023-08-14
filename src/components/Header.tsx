@@ -1,3 +1,4 @@
+import { MAIN_LOGIN_PROVIDER } from "@/pages/api/auth/[...nextauth]";
 import { signIn, signOut, useSession } from "next-auth/react";
 import Image from "next/image";
 import Link from "next/link";
@@ -81,12 +82,23 @@ export const Header = () => {
                     </a>
                   </li>
                   <li>
-                    <a onClick={() => signOut()}>Logout</a>
+                    <a
+                      onClick={() =>
+                        signOut({
+                          callbackUrl: "/",
+                        })
+                      }
+                    >
+                      Logout
+                    </a>
                   </li>
                 </ul>
               </div>
             ) : (
-              <button onClick={() => signIn()} className="btn">
+              <button
+                onClick={() => signIn(MAIN_LOGIN_PROVIDER)}
+                className="btn"
+              >
                 Sign in
               </button>
             )}

@@ -4,6 +4,9 @@ import GithubProvider from "next-auth/providers/github";
 import CredentialsProvider from "next-auth/providers/credentials";
 import { Octokit } from "octokit";
 
+export const MAIN_LOGIN_PROVIDER =
+  process.env.NODE_ENV === "development" ? undefined : "github";
+
 export default NextAuth({
   providers: [
     GithubProvider({

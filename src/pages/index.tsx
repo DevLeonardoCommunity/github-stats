@@ -1,5 +1,6 @@
 import { signIn, useSession } from "next-auth/react";
 import Link from "next/link";
+import { MAIN_LOGIN_PROVIDER } from "./api/auth/[...nextauth]";
 
 export default function Home() {
   const { data: session, status } = useSession();
@@ -17,7 +18,7 @@ export default function Home() {
           Get Started
         </Link>
       ) : (
-        <button onClick={() => signIn()} className="btn">
+        <button onClick={() => signIn(MAIN_LOGIN_PROVIDER)} className="btn">
           Sign in
         </button>
       )}
