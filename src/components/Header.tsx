@@ -1,3 +1,4 @@
+import { MAIN_LOGIN_PROVIDER } from "@/pages/api/auth/[...nextauth]";
 import { signIn, signOut, useSession } from "next-auth/react";
 import Image from "next/image";
 import Link from "next/link";
@@ -36,7 +37,7 @@ export const Header = () => {
                 </li>
                 {status === "authenticated" && (
                   <li>
-                    <Link href="/stats">Stats</Link>
+                    <Link href={`/stats/${session.user.login}`}>Stats</Link>
                   </li>
                 )}
               </ul>
@@ -52,7 +53,7 @@ export const Header = () => {
               </li>
               {status === "authenticated" && (
                 <li>
-                  <Link href="/stats">Stats</Link>
+                  <Link href={`/stats/${session.user.login}`}>Stats</Link>
                 </li>
               )}
             </ul>
@@ -81,12 +82,23 @@ export const Header = () => {
                     </a>
                   </li>
                   <li>
-                    <a onClick={() => signOut()}>Logout</a>
+                    <a
+                      onClick={() =>
+                        signOut({
+                          callbackUrl: "/",
+                        })
+                      }
+                    >
+                      Logout
+                    </a>
                   </li>
                 </ul>
               </div>
             ) : (
-              <button onClick={() => signIn("github")} className="btn">
+              <button
+                onClick={() => signIn(MAIN_LOGIN_PROVIDER)}
+                className="btn"
+              >
                 Sign in
               </button>
             )}

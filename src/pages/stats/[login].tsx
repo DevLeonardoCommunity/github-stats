@@ -1,16 +1,23 @@
 import { RepositoryContributionsCard } from "@/components";
 import { useGitHubPullRequests } from "@/hooks";
 import { useSession } from "next-auth/react";
+import { useRouter } from "next/router";
 import { useState } from "react";
 
 const yearsRange = 4;
 
 export default function Stats() {
   const { data: session } = useSession();
+  const router = useRouter();
+  const { login } = router.query;
+
   const baseYear = new Date().getFullYear();
   const [year, setYear] = useState<number>(baseYear);
   const [format, setFormat] = useState<"cards" | "text" | "json">("cards");
-  const { repositories, isLoading } = useGitHubPullRequests(year);
+  const { repositories, isLoading } = useGitHubPullRequests(
+    year,
+    login as string
+  );
 
   return (
     <div className="h-full w-full px-4 flex flex-col gap-4">
