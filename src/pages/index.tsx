@@ -2,7 +2,7 @@ import { signIn, useSession } from "next-auth/react";
 import Link from "next/link";
 
 export default function Home() {
-  const { status } = useSession();
+  const { data: session, status } = useSession();
 
   return (
     <div className="flex min-h-screen flex-col items-center justify-center gap-12 p-16">
@@ -13,11 +13,11 @@ export default function Home() {
         Show your efforts to your friends (and in your CV)
       </p>
       {status === "authenticated" ? (
-        <Link href={"/stats"} className="btn btn-primary">
+        <Link href={`/stats/${session.user.login}`} className="btn btn-primary">
           Get Started
         </Link>
       ) : (
-        <button onClick={() => signIn("github")} className="btn">
+        <button onClick={() => signIn()} className="btn">
           Sign in
         </button>
       )}

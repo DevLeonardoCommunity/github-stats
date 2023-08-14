@@ -55,24 +55,20 @@ export default NextAuth({
   ],
   callbacks: {
     jwt({ token, user, account }) {
-      // Coming from GithubProvider
+      if (account?.type === "credentials" && user) {
+        const { accessToken, ...rest } = user as any;
+
+        return {
+          accessToken,
+          user: rest,
+        };
+      }
+
       if (account && user) {
         return {
           accessToken: account.access_token,
           refreshToken: account.refresh_token,
           user,
-        };
-      }
-
-      // Coming from CredentialsProvider only used in dev mode
-      if (token) {
-        const {
-          user: { accessToken, ...user },
-        } = token as any;
-
-        return {
-          accessToken,
-          user: user,
         };
       }
 

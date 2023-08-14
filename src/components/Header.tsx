@@ -36,7 +36,7 @@ export const Header = () => {
                 </li>
                 {status === "authenticated" && (
                   <li>
-                    <Link href="/stats">Stats</Link>
+                    <Link href={`/stats/${session.user.login}`}>Stats</Link>
                   </li>
                 )}
               </ul>
@@ -52,7 +52,7 @@ export const Header = () => {
               </li>
               {status === "authenticated" && (
                 <li>
-                  <Link href="/stats">Stats</Link>
+                  <Link href={`/stats/${session.user.login}`}>Stats</Link>
                 </li>
               )}
             </ul>
@@ -86,7 +86,7 @@ export const Header = () => {
                 </ul>
               </div>
             ) : (
-              <button onClick={() => signIn("github")} className="btn">
+              <button onClick={() => signIn()} className="btn">
                 Sign in
               </button>
             )}

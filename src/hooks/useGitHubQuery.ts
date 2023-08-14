@@ -16,10 +16,7 @@ export const useGitHubQuery = (
       auth: session.accessToken,
     });
 
-    return await gh.graphql<GraphQlQueryResponseData>(query, {
-      login: session.user.login,
-      ...parameters,
-    });
+    return await gh.graphql<GraphQlQueryResponseData>(query, parameters);
   };
 
   const queryResult = useQuery({
