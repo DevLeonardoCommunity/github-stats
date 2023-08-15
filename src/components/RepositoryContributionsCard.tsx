@@ -1,5 +1,6 @@
 import { Contributions, Repository } from "@/types/github";
 import Image from "next/image";
+import Link from "next/link";
 
 export const RepositoryContributionsCard = ({
   repository,
@@ -20,7 +21,10 @@ export const RepositoryContributionsCard = ({
               height={40}
               className="rounded-full"
             />
-            {repository.owner.login}/{repository.name}
+            <Link href={`https://github.com/${repository.owner.login}/${repository.name}`} rel="noopener noreferrer" target="_blank" className="hover:underline" aria-label={`${repository.name}`}>
+
+              {repository.owner.login}/{repository.name}
+            </Link>
           </div>
           <div>{totalCount}</div>
         </h2>
