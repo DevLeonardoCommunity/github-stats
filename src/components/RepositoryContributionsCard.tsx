@@ -33,10 +33,10 @@ export const RepositoryContributionsCard = ({
             <div key={id} className="flex justify-between gap-2">
               <span>{title}</span>
               <span className={`rounded p-1 ${state === 'MERGED'
-                ? 'bg-green-500'
+                ? 'bg-purple-500'
                 : state === 'CLOSED'
                   ? 'bg-red-500'
-                  : 'bg-blue-500'
+                  : 'bg-green-500'
                 }`}>{state}</span>
             </div>
           ))}
