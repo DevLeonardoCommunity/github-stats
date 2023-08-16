@@ -28,3 +28,13 @@ export type Owner = {
   login: string;
   avatarUrl: string;
 };
+
+export type User = {
+  login: string;
+  avatarUrl: string;
+  bio: string;
+  name: string;
+  followers: {
+    totalCount: number;
+  };
+};

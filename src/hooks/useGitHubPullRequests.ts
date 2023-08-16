@@ -1,4 +1,4 @@
-import { pullRequests } from "@/graphql/queries";
+import { pullRequestsQuery } from "@/graphql/queries";
 import { useGitHubQuery } from "./useGitHubQuery";
 import { PullRequestContributionsByRepository } from "@/types/github";
 import { useMemo } from "react";
@@ -11,7 +11,7 @@ export const useGitHubPullRequests = (year: number, login: string) => {
     };
   }, [year, login]);
 
-  const { data, isLoading } = useGitHubQuery(pullRequests, params);
+  const { data, isLoading } = useGitHubQuery<any>(pullRequestsQuery, params);
 
   const repositories: PullRequestContributionsByRepository[] =
     data?.user?.contributionsCollection?.pullRequestContributionsByRepository;
