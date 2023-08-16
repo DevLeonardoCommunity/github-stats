@@ -19,6 +19,48 @@ export default function Stats() {
     login as string
   );
 
+
+  //function for exporting the json format data
+  const exportJSON = () => {
+
+    const jsonStringData = JSON.stringify(repositories, null, 2);
+ 
+    const blob = new Blob([jsonStringData], {type: 'application/json'});
+
+    const url = URL.createObjectURL(blob);
+
+    const link = document.createElement('a')
+    //setting the link as url of the blob
+    link.href = url;
+    link.download = 'data.json';
+    link.click();
+    URL.revokeObjectURL(url);
+  };
+
+
+  //function for exporting the data format text
+
+  const exportText  = () => {
+
+
+      const repo = document.getElementById('repo-content');
+      const textRepo = repo?.textContent || ''; 
+      const contri = document.getElementById('pr-content');
+      const textPR = contri?.textContent || '';
+
+    const blob = new Blob([textRepo, textPR], {type: 'text/plain'});
+
+    const url = URL.createObjectURL(blob);
+
+    const link = document.createElement('a')
+    //setting the link as url of the blob
+    link.href = url;
+    link.download = 'data.txt';
+    link.click();
+    URL.revokeObjectURL(url);
+  }
+
+  
   return (
     <div className="h-full w-full px-4 flex flex-col gap-4">
       <div className="w-full mt-4">
@@ -80,24 +122,26 @@ export default function Stats() {
       {isLoading ? (
         <div>Loading...</div>
       ) : format === "cards" ? (
+        <div>
         <div className="w-full grid xl:grid-cols-3 gap-3 mb-3 md:grid-cols-2">
           {repositories?.map(({ repository, contributions }) => (
             <RepositoryContributionsCard
-              key={repository.name}
-              repository={repository}
-              contributions={contributions}
+            key={repository.name}
+            repository={repository}
+            contributions={contributions}
             />
-          ))}
+            ))}
+          </div>
         </div>
       ) : format === "text" ? (
         <pre>
           {repositories?.map(({ repository, contributions }) => (
-            <div key={repository.name}>
+            <div key={repository.name} id="repo-content">
               {repository.owner.login}/{repository.name} (
               {contributions.totalCount})
               <br />
               {contributions.nodes.map(({ pullRequest }) => (
-                <span key={pullRequest.id}>
+                <span key={pullRequest.id} id="pr-content">
                   {pullRequest.title} - {pullRequest.state}
                   <br />
                 </span>
@@ -105,10 +149,16 @@ export default function Stats() {
               <br />
             </div>
           ))}
+          <button className="bg-blue-500 p-2 m-1 rounded hover:bg-blue-900" onClick={exportText}>Export as Text</button>
         </pre>
       ) : (
-        <pre>{JSON.stringify(repositories, null, 2)}</pre>
-      )}
+        <div>
+        <button className="bg-blue-500 p-2 m-1 rounded hover:bg-blue-900" onClick={exportJSON}>Export as JSON</button>
+        <pre>
+        {JSON.stringify(repositories, null, 2)}  
+        </pre>
+        </div>
+        )}
     </div>
   );
 }
