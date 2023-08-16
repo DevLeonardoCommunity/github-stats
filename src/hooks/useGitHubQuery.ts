@@ -1,12 +1,14 @@
-import type { GraphQlQueryResponseData } from "@octokit/graphql";
 import { useSession } from "next-auth/react";
 import { Octokit } from "octokit";
 import { useQuery } from "react-query";
 
-export const useGitHubQuery = (
+export const useGitHubQuery = <T extends unknown>(
   query: string,
   parameters?: Record<string, any>
-): any => {
+): {
+  data?: T;
+  isLoading: boolean;
+} => {
   const { data: session, status } = useSession();
 
   const fetchData = async () => {
@@ -16,7 +18,10 @@ export const useGitHubQuery = (
       auth: session.accessToken,
     });
 
-    return await gh.graphql<GraphQlQueryResponseData>(query, parameters);
+    return await gh.graphql<T>(query, {
+      ...parameters,
+      login: parameters?.login ?? session.user.login,
+    });
   };
 
   const queryResult = useQuery({

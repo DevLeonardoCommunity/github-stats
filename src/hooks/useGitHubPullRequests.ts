@@ -1,7 +1,8 @@
-import { pullRequests } from "@/graphql/queries";
-import { useGitHubQuery } from "./useGitHubQuery";
+import { pullRequestsQuery } from "@/graphql/queries";
 import { PullRequestContributionsByRepository } from "@/types/github";
+import type { GraphQlQueryResponseData } from "@octokit/graphql";
 import { useMemo } from "react";
+import { useGitHubQuery } from "./useGitHubQuery";
 
 export const useGitHubPullRequests = (year: number, login: string) => {
   const params = useMemo(() => {
@@ -11,7 +12,10 @@ export const useGitHubPullRequests = (year: number, login: string) => {
     };
   }, [year, login]);
 
-  const { data, isLoading } = useGitHubQuery(pullRequests, params);
+  const { data, isLoading } = useGitHubQuery<GraphQlQueryResponseData>(
+    pullRequestsQuery,
+    params
+  );
 
   const repositories: PullRequestContributionsByRepository[] =
     data?.user?.contributionsCollection?.pullRequestContributionsByRepository;
