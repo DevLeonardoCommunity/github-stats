@@ -25,11 +25,11 @@ export default NextAuth({
       name: "Credentials",
       credentials: {},
       async authorize() {
-        if (!process.env.DEV_GITHUB_TOKEN)
-          throw new Error("No DEV_GITHUB_TOKEN env variable set");
-
         if (process.env.NODE_ENV !== "development")
           throw new Error("CredentialsProvider can only be used in dev mode");
+
+        if (!process.env.DEV_GITHUB_TOKEN)
+          throw new Error("No DEV_GITHUB_TOKEN env variable set");
 
         const gh = new Octokit({
           auth: process.env.DEV_GITHUB_TOKEN,
@@ -76,6 +76,9 @@ export default NextAuth({
       }
 
       return token;
+    },
+    async redirect({ baseUrl }) {
+      return `${baseUrl}/`;
     },
     session({ session, token }: any) {
       return {
