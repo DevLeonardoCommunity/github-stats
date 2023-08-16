@@ -82,15 +82,7 @@ export const Header = () => {
                     </a>
                   </li>
                   <li>
-                    <a
-                      onClick={() =>
-                        signOut({
-                          callbackUrl: "/",
-                        })
-                      }
-                    >
-                      Logout
-                    </a>
+                    <a onClick={() => signOut()}>Logout</a>
                   </li>
                 </ul>
               </div>
