@@ -1,4 +1,3 @@
-import type { GraphQlQueryResponseData } from "@octokit/graphql";
 import { useSession } from "next-auth/react";
 import { Octokit } from "octokit";
 import { useQuery } from "react-query";
