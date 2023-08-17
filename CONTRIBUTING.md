@@ -1,11 +1,40 @@
 # How to Contribute
 
-TODO: docs on how to run the nextjs project and maybe even the fork/clone/pr flow
+1. Fork the repository
+2. Clone the repository to your local machine
+3. Create a new branch 
+```
+ git checkout -b <branch-name>
+```
 
-## Environment Variables
+4. Make your changes
+5. Commit and push your changes
+```
+ git add .
+ git commit -m "commit message"
+ git push origin <branch-name>
+```
+6. Create a pull request
+7. Wait for the pull request to be reviewed and merged
+
+
+# How to Setup Environment Variables
 
 Rename the file `.env.example` into `.env.local` and fill in the values.
 
-In order to make the login work you will need to create a new OAuth app on GitHub. You can find the instructions on the [Official GitHub Documentation](https://docs.github.com/en/apps/creating-github-apps/registering-a-github-app/registering-a-github-app).
+## GitHub OAuth App
+1. Go to `GitHub Developer Settings` -> `OAuth Apps` -> `New OAuth App`
+![image](https://github.com/priyankarpal/ProjectsHut/assets/88102392/26c397a7-4c11-43a7-8dcd-28b4c901750d)
 
-TODO: Add simplified instructions here
+2. You have to create a new `0Auth App` and fill in the values as shown in the image below.
+![image](https://github.com/priyankarpal/ProjectsHut/assets/88102392/26c397a7-4c11-43a7-8dcd-28b4c901750d)
+3. Now you have to copy `CLIENT ID` & `CLIENT SECRETS` and paste in `.env.local` file.
+![Group 1](https://github.com/priyankarpal/ProjectsHut/assets/88102392/c4f8c346-7aa7-4cb5-9f93-aa8200a3808f)
+
+
+## GitHub Token
+
+1. Go to `GitHub Settings` -> `Developer Settings` -> `Personal Access Tokens` -> `Token (classic)` -> `Generate new token`
+![image](https://github.com/priyankarpal/ProjectsHut/assets/88102392/bcb319ec-0596-4dfc-ba88-097f591f18e4)
+2. Give the `repo` permission, add token name and copy the token and paste in `.env.local` file.
+
