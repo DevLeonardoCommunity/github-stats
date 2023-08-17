@@ -2,7 +2,7 @@ import { RepositoryContributionsCard } from "@/components";
 import { useGitHubPullRequests } from "@/hooks";
 import { useSession } from "next-auth/react";
 import { useRouter } from "next/router";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 const yearsRange = 4;
 
@@ -42,7 +42,6 @@ export default function Stats() {
 
   const exportText  = () => {
 
-
       const repo = document.getElementById('repo-content');
       const textRepo = repo?.textContent || ''; 
       const contri = document.getElementById('pr-content');
@@ -60,7 +59,34 @@ export default function Stats() {
     URL.revokeObjectURL(url);
   }
 
-  
+  //function for generating the text
+  const generateText = () => {
+    let result = '';
+
+    for(const data of repositories){
+      console.log(data)
+
+      const repo_name = data.repository.name;
+      const owner = data.repository.owner;
+      const stargazerCount = data.repository.stargazerCount;
+
+      const contributions: any = data.contributions;
+
+      //for contributions 
+      for(const result of contributions){
+         
+      }
+
+      result += `${owner.avatarUrl}${owner.login}"/"${repo_name}"-"(${stargazerCount})\n`
+
+     
+      result +=  ``
+    }
+  } 
+  useEffect(()=>{
+   console.log(repositories)
+  }, [])
+
   return (
     <div className="h-full w-full px-4 flex flex-col gap-4">
       <div className="w-full mt-4">
@@ -149,7 +175,7 @@ export default function Stats() {
               <br />
             </div>
           ))}
-          <button className="bg-blue-500 p-2 m-1 rounded hover:bg-blue-900" onClick={exportText}>Export as Text</button>
+          <button className="bg-blue-500 p-2 m-1 rounded hover:bg-blue-900" onClick={generateText}>Export as Text</button>
         </pre>
       ) : (
         <div>
