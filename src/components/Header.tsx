@@ -82,6 +82,9 @@ export const Header = () => {
                     </a>
                   </li>
                   <li>
+                    <Link href={`/profile`}>Profile</Link>
+                  </li>
+                  <li>
                     <a onClick={() => signOut()}>Logout</a>
                   </li>
                 </ul>
