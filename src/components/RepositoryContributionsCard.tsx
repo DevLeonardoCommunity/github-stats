@@ -21,18 +21,33 @@ export const RepositoryContributionsCard = ({
               height={40}
               className="rounded-full"
             />
-            <Link href={`https://github.com/${repository.owner.login}/${repository.name}`} rel="noopener noreferrer" target="_blank" className="hover:underline" aria-label={`${repository.name}`}>
-
+            <Link
+              href={`https://github.com/${repository.owner.login}/${repository.name}`}
+              rel="noopener noreferrer"
+              target="_blank"
+              className="hover:underline"
+              aria-label={`${repository.name}`}
+            >
               {repository.owner.login}/{repository.name}
             </Link>
           </div>
-          <div>{totalCount}</div>
+          <div className="rounded p-1 outline outline-1">{totalCount}</div>
         </h2>
         <div className="max-h-[200px] overflow-auto flex flex-col gap-1 px-1">
           {nodes?.map(({ pullRequest: { state, title, id } }: any) => (
             <div key={id} className="flex justify-between gap-2">
               <span>{title}</span>
-              <span>{state}</span>
+              <span
+                className={`rounded p-1 ${
+                  state === "MERGED"
+                    ? "bg-purple-500"
+                    : state === "CLOSED"
+                    ? "bg-red-500"
+                    : "bg-green-500"
+                }`}
+              >
+                {state}
+              </span>
             </div>
           ))}
         </div>
