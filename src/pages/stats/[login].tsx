@@ -2,7 +2,7 @@ import { RepositoryContributionsCard } from "@/components";
 import { useGitHubPullRequests } from "@/hooks";
 import { useSession } from "next-auth/react";
 import { useRouter } from "next/router";
-import { useEffect, useState } from "react";
+import {useState } from "react";
 
 const yearsRange = 4;
 
@@ -84,7 +84,6 @@ function generateText() {
         
         text += "\n";
     }
-    console.log(text)
     return text;
 }
 
@@ -151,7 +150,6 @@ function generateText() {
       {isLoading ? (
         <div>Loading...</div>
       ) : format === "cards" ? (
-        <div>
         <div className="w-full grid xl:grid-cols-3 gap-3 mb-3 md:grid-cols-2">
           {repositories?.map(({ repository, contributions }) => (
             <RepositoryContributionsCard
@@ -161,24 +159,10 @@ function generateText() {
             />
             ))}
           </div>
-        </div>
       ) : format === "text" ? (
         <pre>
-          {repositories?.map(({ repository, contributions }) => (
-            <div key={repository.name} id="repo-content">
-              {repository.owner.login}/{repository.name} (
-              {contributions.totalCount})
-              <br />
-              {contributions.nodes.map(({ pullRequest }) => (
-                <span key={pullRequest.id} id="pr-content">
-                  {pullRequest.title} - {pullRequest.state}
-                  <br />
-                </span>
-              ))}
-              <br />
-            </div>
-          ))}
-          <button className="bg-blue-500 p-2 m-1 rounded hover:bg-blue-900" onClick={exportText}>Export as Text</button>
+         <button className="bg-blue-500 p-2 m-1 rounded hover:bg-blue-900" onClick={exportText}>Export as Text</button>
+         {generateText()}
         </pre>
       ) : (
         <div>
