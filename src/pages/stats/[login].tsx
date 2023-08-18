@@ -41,13 +41,9 @@ export default function Stats() {
   //function for exporting the data format text
 
   const exportText  = () => {
-
-      const repo = document.getElementById('repo-content');
-      const textRepo = repo?.textContent || ''; 
-      const contri = document.getElementById('pr-content');
-      const textPR = contri?.textContent || '';
-
-    const blob = new Blob([textRepo, textPR], {type: 'text/plain'});
+      
+    const text = generateText();
+    const blob = new Blob([text], {type: 'text/plain'});
 
     const url = URL.createObjectURL(blob);
 
@@ -60,32 +56,39 @@ export default function Stats() {
   }
 
   //function for generating the text
-  const generateText = () => {
-    let result = '';
-
-    for(const data of repositories){
-      console.log(data)
-
-      const repo_name = data.repository.name;
-      const owner = data.repository.owner;
-      const stargazerCount = data.repository.stargazerCount;
-
-      const contributions: any = data.contributions;
-
-      //for contributions 
-      for(const result of contributions){
-         
-      }
-
-      result += `${owner.avatarUrl}${owner.login}"/"${repo_name}"-"(${stargazerCount})\n`
-
-     
-      result +=  ``
+function generateText() {
+    
+    let text = "List of repositories and their pull requests:\n\n";
+    
+    for (const repoData of repositories) {
+        const repositoryName = repoData.repository.name;
+        const ownerLogin = repoData.repository.owner.login;
+        const stargazerCount = repoData.repository.stargazerCount;
+        const avatarUrl = repoData.repository.owner.avatarUrl;
+        
+        text += `Repository: ${repositoryName}\n`;
+        text += `Owner: ${ownerLogin}\n`;
+        text += `Stargazers: ${stargazerCount}\n`;
+        text += `Owner Avatar: ${avatarUrl}\n\n`;
+        
+        const contributions = repoData.contributions.nodes;
+        text += "Contributions:\n";
+        for (const contribution of contributions) {
+            const prId = contribution.pullRequest.id;
+            const prTitle = contribution.pullRequest.title;
+            const prState = contribution.pullRequest.state;
+            text += `- Pull Request: ${prTitle}\n`;
+            text += `  ID: ${prId}\n`;
+            text += `  State: ${prState}\n`;
+        }
+        
+        text += "\n";
     }
-  } 
-  useEffect(()=>{
-   console.log(repositories)
-  }, [])
+    console.log(text)
+    return text;
+}
+
+
 
   return (
     <div className="h-full w-full px-4 flex flex-col gap-4">
@@ -175,7 +178,7 @@ export default function Stats() {
               <br />
             </div>
           ))}
-          <button className="bg-blue-500 p-2 m-1 rounded hover:bg-blue-900" onClick={generateText}>Export as Text</button>
+          <button className="bg-blue-500 p-2 m-1 rounded hover:bg-blue-900" onClick={exportText}>Export as Text</button>
         </pre>
       ) : (
         <div>
