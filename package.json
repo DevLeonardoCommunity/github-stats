@@ -7,6 +7,7 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
+    "test": "vitest",
     "format:check": "prettier --check .",
     "format:fix": "prettier --write ."
   },
@@ -28,7 +29,11 @@
     "typescript": "5.1.6"
   },
   "devDependencies": {
+    "@testing-library/react": "^14.0.0",
+    "@vitejs/plugin-react": "^4.0.4",
     "daisyui": "^3.3.1",
-    "prettier": "^3.0.1"
+    "jsdom": "^22.1.0",
+    "prettier": "^3.0.2",
+    "vitest": "^0.34.2"
   }
 }
