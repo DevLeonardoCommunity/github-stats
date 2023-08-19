@@ -33,3 +33,14 @@ The goal of this project isn't the outcome itself but rather the process of buil
 Instructions on how to run the app locally can be found in [CONTRIBUTING.md](./CONTRIBUTING.md).
 
 Thanks for reading and happy coding!
+
+## Contributors
+
+<!-- ALL-CONTRIBUTORS-LIST:START - Do not remove or modify this section -->
+<!-- prettier-ignore-start -->
+<!-- markdownlint-disable -->
+
+<!-- markdownlint-restore -->
+<!-- prettier-ignore-end -->
+
+<!-- ALL-CONTRIBUTORS-LIST:END -->
