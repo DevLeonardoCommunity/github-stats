@@ -16,6 +16,15 @@
         "projectManagement",
         "code"
       ]
+    },
+    {
+      "login": "theanantchoubey",
+      "name": "Anant Choubey",
+      "avatar_url": "https://avatars.githubusercontent.com/u/91460022?v=4",
+      "profile": "https://bio.link/anantchoubey",
+      "contributions": [
+        "doc"
+      ]
     }
   ],
   "contributorsPerLine": 7,
