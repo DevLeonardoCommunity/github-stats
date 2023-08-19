@@ -35,7 +35,7 @@ Just you need to add only `DEV_GITHUB_TOKEN` in `.env.local` file.
 1. Go to `GitHub Developer Settings` -> `OAuth Apps` -> `New OAuth App`
 ![image](https://github.com/priyankarpal/ProjectsHut/assets/88102392/26c397a7-4c11-43a7-8dcd-28b4c901750d)
 
-2. You have to create a new `0Auth App` and fill in the values as shown in the image below.
+2. You have to create a new `OAuth App` and fill in the values as shown in the image below.
 ![image](https://github.com/priyankarpal/ProjectsHut/assets/88102392/26c397a7-4c11-43a7-8dcd-28b4c901750d)
 3. Now you have to copy `CLIENT ID` & `CLIENT SECRETS` and paste in `.env.local` file.
 ![Group 1](https://github.com/priyankarpal/ProjectsHut/assets/88102392/c4f8c346-7aa7-4cb5-9f93-aa8200a3808f)
