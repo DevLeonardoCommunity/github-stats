@@ -40,3 +40,5 @@ Just you need to add only `DEV_GITHUB_TOKEN` in `.env.local` file.
 3. Now you have to copy `CLIENT ID` & `CLIENT SECRETS` and paste in `.env.local` file.
 ![Group 1](https://github.com/priyankarpal/ProjectsHut/assets/88102392/c4f8c346-7aa7-4cb5-9f93-aa8200a3808f)
 
+
+### Remember, `Client ID` goes to `GITHUB_ID` and `Client SECRETS` goes into `GITHUB_SECRET`.
