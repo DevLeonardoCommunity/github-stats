@@ -16,6 +16,17 @@
         "projectManagement",
         "code"
       ]
+    },
+    {
+      "login": "priyankarpal",
+      "name": "Priyankar Pal ",
+      "avatar_url": "https://avatars.githubusercontent.com/u/88102392?v=4",
+      "profile": "http://priyank.live",
+      "contributions": [
+        "doc",
+        "code",
+        "ideas"
+      ]
     }
   ],
   "contributorsPerLine": 7,
