@@ -1,0 +1,27 @@
+{
+  "files": [
+    "README.md"
+  ],
+  "imageSize": 100,
+  "commit": false,
+  "commitType": "docs",
+  "commitConvention": "angular",
+  "contributors": [
+    {
+      "login": "Balastrong",
+      "name": "Leonardo Montini",
+      "avatar_url": "https://avatars.githubusercontent.com/u/7253929?v=4",
+      "profile": "https://leonardomontini.dev/",
+      "contributions": [
+        "projectManagement",
+        "code"
+      ]
+    }
+  ],
+  "contributorsPerLine": 7,
+  "skipCi": true,
+  "repoType": "github",
+  "repoHost": "https://github.com",
+  "projectName": "github-stats",
+  "projectOwner": "Balastrong"
+}
