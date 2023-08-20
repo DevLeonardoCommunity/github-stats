@@ -142,35 +142,42 @@ export default function Stats() {
       </div>
       {isLoading ? (
         <div>Loading...</div>
-      ) : format === "cards" ? (
-        <div className="w-full grid xl:grid-cols-3 gap-3 mb-3 md:grid-cols-2">
-          {repositories?.map(({ repository, contributions }) => (
-            <RepositoryContributionsCard
-              key={repository.name}
-              repository={repository}
-              contributions={contributions}
-            />
-          ))}
-        </div>
-      ) : format === "text" ? (
-        <pre>
-          <button
-            className="bg-blue-500 p-2 m-1 rounded hover:bg-blue-900"
-            onClick={exportText}
-          >
-            Export as Text
-          </button>
-          {generateText()}
-        </pre>
+      ) : repositories?.length > 0 ? (
+        format === "cards" ? (
+          <div className="w-full grid xl:grid-cols-3 gap-3 mb-3 md:grid-cols-2">
+            {repositories?.map(({ repository, contributions }) => (
+              <RepositoryContributionsCard
+                key={repository.name}
+                repository={repository}
+                contributions={contributions}
+              />
+            ))}
+          </div>
+        ) : format === "text" ? (
+          <pre>
+            <button
+              className="bg-blue-500 p-2 m-1 rounded hover:bg-blue-900"
+              onClick={exportText}
+            >
+              Export as Text
+            </button>
+            {generateText()}
+          </pre>
+        ) : (
+          <div>
+            <button
+              className="bg-blue-500 p-2 m-1 rounded hover:bg-blue-900"
+              onClick={exportJSON}
+            >
+              Export as JSON
+            </button>
+            <pre>{JSON.stringify(repositories, null, 2)}</pre>
+          </div>
+        )
       ) : (
-        <div>
-          <button
-            className="bg-blue-500 p-2 m-1 rounded hover:bg-blue-900"
-            onClick={exportJSON}
-          >
-            Export as JSON
-          </button>
-          <pre>{JSON.stringify(repositories, null, 2)}</pre>
+        <div className="flex flex-col items-center justify-center h-full">
+          <h1 className="text-4xl p-2">📃</h1> 
+          <h1 className="text-xl">No Contributions</h1>
         </div>
       )}
     </div>
