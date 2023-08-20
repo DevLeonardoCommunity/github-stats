@@ -12,21 +12,32 @@
       "name": "Leonardo Montini",
       "avatar_url": "https://avatars.githubusercontent.com/u/7253929?v=4",
       "profile": "https://leonardomontini.dev/",
-      "contributions": ["projectManagement", "code"]
+      "contributions": [
+        "projectManagement",
+        "code"
+      ]
     },
     {
       "login": "theanantchoubey",
       "name": "Anant Choubey",
       "avatar_url": "https://avatars.githubusercontent.com/u/91460022?v=4",
       "profile": "https://bio.link/anantchoubey",
-      "contributions": ["doc"]
+      "contributions": [
+        "doc",
+        "bug",
+        "code"
+      ]
     },
     {
       "login": "priyankarpal",
       "name": "Priyankar Pal ",
       "avatar_url": "https://avatars.githubusercontent.com/u/88102392?v=4",
       "profile": "http://priyank.live",
-      "contributions": ["doc", "code", "ideas"]
+      "contributions": [
+        "doc",
+        "code",
+        "ideas"
+      ]
     },
     {
       "login": "piyushjha0409",
