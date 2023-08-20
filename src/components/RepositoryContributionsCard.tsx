@@ -38,7 +38,7 @@ export const RepositoryContributionsCard = ({
             <div key={id} className="flex justify-between gap-2">
               <span>{title}</span>
               <span
-                className={`rounded p-1 ${
+                className={`h-fit rounded p-1 ${
                   state === "MERGED"
                     ? "bg-purple-500"
                     : state === "CLOSED"
