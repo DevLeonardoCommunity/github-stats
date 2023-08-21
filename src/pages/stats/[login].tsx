@@ -19,7 +19,6 @@ export default function Stats() {
     login as string
   );
 
-  //function for exporting the json format data
   const exportJSON = () => {
     const jsonStringData = JSON.stringify(repositories, null, 2);
 
@@ -35,8 +34,6 @@ export default function Stats() {
     URL.revokeObjectURL(url);
   };
 
-  //function for exporting the data format text
-
   const exportText = () => {
     const text = generateText();
     const blob = new Blob([text], { type: "text/plain" });
@@ -51,7 +48,6 @@ export default function Stats() {
     URL.revokeObjectURL(url);
   };
 
-  //function for generating the text
   function generateText() {
     let text = "List of repositories and their pull requests:\n\n";
 
@@ -128,6 +124,8 @@ export default function Stats() {
           </div>
         );
     }
+
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [repositories, format]);
 
   return (
