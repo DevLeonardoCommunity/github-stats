@@ -16,6 +16,14 @@ Why our? Because this tool is open source and everyone is more than welcome to c
 
 You can grab an issue at any time, or join the [Discord](https://discord.gg/bqwyEa6We6) server to discuss the project and its future. Nothing is set in stone, so feel free to share your ideas and suggestions.
 
+### Learn more
+
+Here's a video describing the project and its goals (on [YouTube](https://www.youtube.com/watch?v=ZM92XPdrOTk))
+
+<a href="https://www.youtube.com/watch?v=ZM92XPdrOTk">
+   <img src="https://i3.ytimg.com/vi/ZM92XPdrOTk/maxresdefault.jpg" style="width:450px;">
+</a>
+
 ## Technologies involved
 
 The app is currently based on [Next.js](https://nextjs.org/) with TypeScript and Tailwind CSS (actually with [DaisyUI](https://daisyui.com/), a Tailwind CSS component library).
