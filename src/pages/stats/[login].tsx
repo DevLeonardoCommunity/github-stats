@@ -3,6 +3,7 @@ import { useGitHubPullRequests } from "@/hooks";
 import { useSession } from "next-auth/react";
 import { useRouter } from "next/router";
 import { useMemo, useState } from "react";
+import { exportStats } from "@/utils";
 
 const yearsRange = 4;
 
@@ -10,7 +11,6 @@ export default function Stats() {
   const { data: session } = useSession();
   const router = useRouter();
   const { login } = router.query;
-
   const baseYear = new Date().getFullYear();
   const [year, setYear] = useState<number>(baseYear);
   const [format, setFormat] = useState<"cards" | "text" | "json">("cards");
@@ -155,6 +155,34 @@ export default function Stats() {
             })}
           </div>
         </div>
+
+        <div className="dropdown">
+          <label tabIndex={0} className="btn m-1">
+            export as image
+          </label>
+          <ul
+            tabIndex={0}
+            className="dropdown-content z-[1] menu p-2 shadow bg-base-100 rounded-box w-52"
+          >
+            <li>
+              <button
+                className="btn btn-ghost"
+                onClick={async () => await exportStats(".grid", "download")}
+              >
+                Download as PNG
+              </button>
+            </li>
+            <li>
+              <button
+                className="btn btn-ghost"
+                onClick={async () => await exportStats(".grid", "clipboard")}
+              >
+                Copy to Clipboard
+              </button>
+            </li>
+          </ul>
+        </div>
+
         <div className="sm:text-right text-center">
           <div>Select Format</div>
           <div className="join">
