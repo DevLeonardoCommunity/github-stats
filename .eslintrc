@@ -1,0 +1,13 @@
+{
+  "extends": ["next/core-web-vitals"],
+  "rules": {
+    "@typescript-eslint/no-redeclare": [
+      "off",
+      {
+        "ignoreDeclarationMerge": true
+      }
+    ],
+    "no-unused-vars": 1,
+    "no-console": "warn"
+  }
+}
