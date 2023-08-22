@@ -4,7 +4,10 @@ export const exportStats = async (
   selector: string,
   option: "download" | "clipboard"
 ) => {
-  const dataURI = await toPng(document.querySelector(selector) as HTMLElement);
+  const dataURI = await toPng(document.querySelector(".grid") as HTMLElement, {
+    includeQueryParams: true,
+    cacheBust: true,
+  });
   const image = new Image();
   image.src = dataURI;
   image.onload = () => {
