@@ -38,10 +38,14 @@ query ($login: String!) {
         name
         followers {
             totalCount
+        } 
+       starsCount: repositories(first: 0, isFork: false) {
+        totalCount
         }
-    }
+     }
 }
 `;
+
 export type UserProfile = {
   user: User;
 };

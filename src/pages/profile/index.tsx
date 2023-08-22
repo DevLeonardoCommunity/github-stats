@@ -30,6 +30,9 @@ export default function Profile() {
             <p className="text-sm text-gray-400">
               Followers: {data.user.followers.totalCount}
             </p>
+            <p className="text-sm text-gray-400">
+              Stars Count: {data.user.starsCount.totalCount}
+            </p>
           </div>
 
           <p>{data.user.bio}</p>
