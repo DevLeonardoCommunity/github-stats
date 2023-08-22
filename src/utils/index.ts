@@ -1,1 +1,1 @@
-export * from "./exportStats";
+export * from "./exportAsImage";

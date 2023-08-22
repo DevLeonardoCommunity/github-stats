@@ -1,10 +1,11 @@
 import { toPng } from "html-to-image";
 
-export const exportStats = async (
+export const exportAsImage = async (
   selector: string,
-  option: "download" | "clipboard"
+  option: "download" | "clipboard",
+  filename?: string
 ) => {
-  const dataURI = await toPng(document.querySelector(".grid") as HTMLElement, {
+  const dataURI = await toPng(document.querySelector(selector) as HTMLElement, {
     includeQueryParams: true,
     cacheBust: true,
   });
@@ -22,7 +23,7 @@ export const exportStats = async (
           const url = URL.createObjectURL(blob);
           const a = document.createElement("a");
           a.href = url;
-          a.download = "stats.png";
+          a.download = `${filename}.png`;
           a.click();
           URL.revokeObjectURL(url);
           a.remove();
