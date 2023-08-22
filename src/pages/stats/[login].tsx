@@ -96,7 +96,7 @@ export default function Stats() {
               >
                 <li>
                   <button
-                    className="btn btn-ghost"
+                    className="btn-ghost"
                     onClick={async () => await exportStats(".grid", "download")}
                   >
                     Download as PNG
@@ -104,7 +104,7 @@ export default function Stats() {
                 </li>
                 <li>
                   <button
-                    className="btn btn-ghost"
+                    className="btn-ghost"
                     onClick={async () =>
                       await exportStats(".grid", "clipboard")
                     }
@@ -115,9 +115,9 @@ export default function Stats() {
               </ul>
             </div>
             <div className="w-full grid xl:grid-cols-3 gap-3 mb-3 md:grid-cols-2">
-              {repositories?.map(({ repository, contributions }) => (
+              {repositories?.map(({ repository, contributions }, i) => (
                 <RepositoryContributionsCard
-                  key={repository.name}
+                  key={i + repository.name}
                   repository={repository}
                   contributions={contributions}
                 />
