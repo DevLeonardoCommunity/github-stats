@@ -3,6 +3,7 @@ import { useGitHubPullRequests } from "@/hooks";
 import { useSession } from "next-auth/react";
 import { useRouter } from "next/router";
 import { useMemo, useState } from "react";
+import { exportStats } from "@/utils";
 
 const yearsRange = 4;
 
@@ -10,7 +11,6 @@ export default function Stats() {
   const { data: session } = useSession();
   const router = useRouter();
   const { login } = router.query;
-
   const baseYear = new Date().getFullYear();
   const [year, setYear] = useState<number>(baseYear);
   const [format, setFormat] = useState<"cards" | "text" | "json">("cards");
@@ -82,15 +82,48 @@ export default function Stats() {
     switch (format) {
       case "cards":
         return (
-          <div className="w-full grid xl:grid-cols-3 gap-3 mb-3 md:grid-cols-2">
-            {repositories?.map(({ repository, contributions }) => (
-              <RepositoryContributionsCard
-                key={repository.name}
-                repository={repository}
-                contributions={contributions}
-              />
-            ))}
-          </div>
+          <>
+            <div className="dropdown">
+              <label
+                tabIndex={0}
+                className="bg-blue-500 p-2 m-1 rounded hover:bg-blue-900"
+              >
+                Export as image
+              </label>
+              <ul
+                tabIndex={0}
+                className="dropdown-content z-[1] menu p-2 shadow bg-base-100 rounded-box w-52"
+              >
+                <li>
+                  <button
+                    className="btn-ghost"
+                    onClick={async () => await exportStats(".grid", "download")}
+                  >
+                    Download as PNG
+                  </button>
+                </li>
+                <li>
+                  <button
+                    className="btn-ghost"
+                    onClick={async () =>
+                      await exportStats(".grid", "clipboard")
+                    }
+                  >
+                    Copy to Clipboard
+                  </button>
+                </li>
+              </ul>
+            </div>
+            <div className="w-full grid xl:grid-cols-3 gap-3 mb-3 md:grid-cols-2">
+              {repositories?.map(({ repository, contributions }, i) => (
+                <RepositoryContributionsCard
+                  key={i + repository.name}
+                  repository={repository}
+                  contributions={contributions}
+                />
+              ))}
+            </div>
+          </>
         );
       case "json":
         return (
@@ -155,6 +188,7 @@ export default function Stats() {
             })}
           </div>
         </div>
+
         <div className="sm:text-right text-center">
           <div>Select Format</div>
           <div className="join">
