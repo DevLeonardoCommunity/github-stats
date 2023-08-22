@@ -139,15 +139,15 @@ export default function Stats() {
         );
       case "text":
         return (
-          <pre>
+          <div>
             <button
               className="bg-blue-500 p-2 m-1 rounded hover:bg-blue-900"
               onClick={exportText}
             >
               Export as Text
             </button>
-            {generateText()}
-          </pre>
+            <pre>{generateText()}</pre>
+          </div>
         );
       default:
         return (
