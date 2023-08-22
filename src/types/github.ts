@@ -37,4 +37,7 @@ export type User = {
   followers: {
     totalCount: number;
   };
+  starsCount: {
+    totalCount: number;
+  };
 };
