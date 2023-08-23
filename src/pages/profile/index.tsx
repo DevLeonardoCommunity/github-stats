@@ -29,12 +29,8 @@ export default function Profile() {
             <li>
               <button
                 className="btn-ghost"
-                onClick={async () =>
-                  await exportAsImage(
-                    "#profile-card",
-                    "download",
-                    "profile-card"
-                  )
+                onClick={() =>
+                  exportAsImage("#profile-card", "download", "profile-card")
                 }
               >
                 Download as PNG
@@ -43,9 +39,7 @@ export default function Profile() {
             <li>
               <button
                 className="btn-ghost"
-                onClick={async () =>
-                  await exportAsImage("#profile-card", "clipboard")
-                }
+                onClick={() => exportAsImage("#profile-card", "clipboard")}
               >
                 Copy to Clipboard
               </button>
@@ -53,17 +47,17 @@ export default function Profile() {
           </ul>
         </div>
       </div>
-      <div id="profile-card" className="p-1">
-        <div className="card w-96 mx-auto my-10 bg-base-100 shadow-xl h-100 relative">
-          <div className="absolute h-[100px] bg-base-200 top-0 w-full rounded-t-2xl"></div>
-          <div className="z-10">
+      <div>
+        <div className="card w-96 mx-auto my-10 bg-base-100 shadow-xl h-100  ">
+          <div id="profile-card" className="relative bg-base-100 rounded-2xl ">
+            <div className="absolute h-[100px] bg-base-200 w-full rounded-t-2xl" />
             <figure className="px-10 pt-10">
               <Image
                 src={data.user.avatarUrl}
                 alt={data?.user.login}
                 width={120}
                 height={120}
-                className="rounded-full"
+                className="rounded-full z-10"
               />
             </figure>
             <div className="card-body items-center text-center gap-4">

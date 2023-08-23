@@ -97,9 +97,7 @@ export default function Stats() {
                 <li>
                   <button
                     className="btn-ghost"
-                    onClick={async () =>
-                      await exportAsImage(".grid", "download", "stats")
-                    }
+                    onClick={() => exportAsImage(".grid", "download", "stats")}
                   >
                     Download as PNG
                   </button>
@@ -107,9 +105,7 @@ export default function Stats() {
                 <li>
                   <button
                     className="btn-ghost"
-                    onClick={async () =>
-                      await exportAsImage(".grid", "clipboard")
-                    }
+                    onClick={() => exportAsImage(".grid", "clipboard")}
                   >
                     Copy to Clipboard
                   </button>
