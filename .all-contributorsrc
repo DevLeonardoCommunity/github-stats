@@ -57,6 +57,15 @@
         "design",
         "code"
       ]
+    },
+    {
+      "login": "jakubfronczyk",
+      "name": "Jakub Fronczyk",
+      "avatar_url": "https://avatars.githubusercontent.com/u/71935020?v=4",
+      "profile": "http://jakubfronczyk.com",
+      "contributions": [
+        "code"
+      ]
     }
   ],
   "contributorsPerLine": 7,
