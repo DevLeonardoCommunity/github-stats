@@ -15,10 +15,13 @@ export default function Stats() {
   const baseYear = new Date().getFullYear();
   const [year, setYear] = useState<number>(baseYear);
   const [format, setFormat] = useState<"cards" | "text" | "json">("cards");
-  const { repositories, isLoading } = useGitHubPullRequests(
-    year,
-    login as string
-  );
+  const {
+    repositories,
+    isLoading,
+  }: {
+    repositories: PullRequestContributionsByRepository[];
+    isLoading: boolean;
+  } = useGitHubPullRequests(year, login as string);
 
   const exportJSON = () => {
     const jsonStringData = JSON.stringify(repositories, null, 2);
@@ -116,21 +119,13 @@ export default function Stats() {
               </ul>
             </div>
             <div className="w-full grid xl:grid-cols-3 gap-3 mb-3 md:grid-cols-2">
-              {repositories?.map(
-                (
-                  {
-                    repository,
-                    contributions,
-                  }: PullRequestContributionsByRepository,
-                  i: number
-                ) => (
-                  <RepositoryContributionsCard
-                    key={i + repository.name}
-                    repository={repository}
-                    contributions={contributions}
-                  />
-                )
-              )}
+              {repositories?.map(({ repository, contributions }, i) => (
+                <RepositoryContributionsCard
+                  key={i + repository.name}
+                  repository={repository}
+                  contributions={contributions}
+                />
+              ))}
             </div>
           </>
         );
