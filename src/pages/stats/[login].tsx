@@ -3,7 +3,7 @@ import { useGitHubPullRequests } from "@/hooks";
 import { useSession } from "next-auth/react";
 import { useRouter } from "next/router";
 import { useMemo, useState } from "react";
-import { exportStats } from "@/utils";
+import { exportAsImage } from "@/utils";
 import { PullRequestContributionsByRepository } from "@/types/github";
 
 const yearsRange = 4;
@@ -101,7 +101,7 @@ export default function Stats() {
                 <li>
                   <button
                     className="btn-ghost"
-                    onClick={async () => await exportStats(".grid", "download")}
+                    onClick={() => exportAsImage(".grid", "download", "stats")}
                   >
                     Download as PNG
                   </button>
@@ -109,9 +109,7 @@ export default function Stats() {
                 <li>
                   <button
                     className="btn-ghost"
-                    onClick={async () =>
-                      await exportStats(".grid", "clipboard")
-                    }
+                    onClick={() => exportAsImage(".grid", "clipboard")}
                   >
                     Copy to Clipboard
                   </button>
