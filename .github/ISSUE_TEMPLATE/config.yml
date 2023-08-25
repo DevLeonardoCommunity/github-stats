@@ -1,0 +1,8 @@
+blank_issues_enabled: true
+contact_links:
+  - name: Questions
+    url: https://discord.gg/5CceB5Y6Zt
+    about: You can join the discussions on Discord.
+  - name: Login does not work
+    url: https://github.com/Balastrong/github-stats/blob/main/CONTRIBUTING.md
+    about: Before opening a new issue, please make sure to read CONTRIBUTING.md
