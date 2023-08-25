@@ -136,7 +136,9 @@ export default function Stats() {
             >
               Export as JSON
             </button>
-            <pre>{JSON.stringify(repositories, null, 2)}</pre>
+            <div className="p-2 m-1 text-xs overflow-x-auto sm:text-sm md:text-base lg:text-lg">
+              <pre>{JSON.stringify(repositories, null, 2)}</pre>
+            </div>
           </div>
         );
       case "text":
@@ -148,7 +150,9 @@ export default function Stats() {
             >
               Export as Text
             </button>
-            <pre>{generateText()}</pre>
+            <div className="p-2 m-1 text-xs overflow-x-auto sm:text-sm md:text-base lg:text-lg">
+              <pre>{generateText()}</pre>
+            </div>
           </div>
         );
       default:
