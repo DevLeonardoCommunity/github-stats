@@ -2,7 +2,7 @@
 
 <!-- prettier-ignore-start -->
 <!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
-[![All Contributors](https://img.shields.io/badge/all_contributors-6-orange.svg?style=flat-square)](#contributors-)
+[![All Contributors](https://img.shields.io/badge/all_contributors-8-orange.svg?style=flat-square)](#contributors-)
 <!-- ALL-CONTRIBUTORS-BADGE:END -->
 <!-- prettier-ignore-end -->
 
@@ -62,6 +62,10 @@ Thanks for reading and happy coding!
       <td align="center" valign="top" width="14.28%"><a href="https://github.com/piyushjha0409"><img src="https://avatars.githubusercontent.com/u/73685420?v=4?s=100" width="100px;" alt="Piyush Jha"/><br /><sub><b>Piyush Jha</b></sub></a><br /><a href="https://github.com/Balastrong/github-stats/commits?author=piyushjha0409" title="Code">💻</a></td>
       <td align="center" valign="top" width="14.28%"><a href="https://www.bassemdimassi.tech/"><img src="https://avatars.githubusercontent.com/u/75867744?v=4?s=100" width="100px;" alt="Dimassi Bassem"/><br /><sub><b>Dimassi Bassem</b></sub></a><br /><a href="#design-dimassibassem" title="Design">🎨</a> <a href="https://github.com/Balastrong/github-stats/commits?author=dimassibassem" title="Code">💻</a></td>
       <td align="center" valign="top" width="14.28%"><a href="http://jakubfronczyk.com"><img src="https://avatars.githubusercontent.com/u/71935020?v=4?s=100" width="100px;" alt="Jakub Fronczyk"/><br /><sub><b>Jakub Fronczyk</b></sub></a><br /><a href="https://github.com/Balastrong/github-stats/commits?author=jakubfronczyk" title="Code">💻</a></td>
+      <td align="center" valign="top" width="14.28%"><a href="https://github.com/black-arm"><img src="https://avatars.githubusercontent.com/u/68558867?v=4?s=100" width="100px;" alt="Antonio Basile"/><br /><sub><b>Antonio Basile</b></sub></a><br /><a href="https://github.com/Balastrong/github-stats/commits?author=black-arm" title="Code">💻</a></td>
+    </tr>
+    <tr>
+      <td align="center" valign="top" width="14.28%"><a href="https://github.com/Agrimaagrawal"><img src="https://avatars.githubusercontent.com/u/84567933?v=4?s=100" width="100px;" alt="Agrima Agrawal"/><br /><sub><b>Agrima Agrawal</b></sub></a><br /><a href="https://github.com/Balastrong/github-stats/issues?q=author%3AAgrimaagrawal" title="Bug reports">🐛</a></td>
     </tr>
   </tbody>
 </table>
