@@ -10,7 +10,8 @@
     "test": "vitest",
     "format:check": "prettier --check .",
     "format:fix": "prettier --write .",
-    "prepare": "husky install"
+    "prepare": "husky install",
+    "cypress": "cypress open"
   },
   "dependencies": {
     "@types/node": "20.4.4",
@@ -32,6 +33,7 @@
   "devDependencies": {
     "@testing-library/react": "^14.0.0",
     "@vitejs/plugin-react": "^4.0.4",
+    "cypress": "^13.2.0",
     "daisyui": "^3.3.1",
     "husky": "^8.0.0",
     "jsdom": "^22.1.0",
