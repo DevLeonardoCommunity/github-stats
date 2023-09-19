@@ -90,7 +90,7 @@ export default function Stats() {
             <div className="dropdown">
               <label
                 tabIndex={0}
-                className="bg-blue-500 p-2 m-1 rounded hover:bg-blue-900"
+                className="block w-fit bg-blue-500 p-2 m-1 rounded hover:bg-blue-900"
               >
                 Export as image
               </label>
@@ -233,7 +233,7 @@ export default function Stats() {
       ) : (
         <div className="flex flex-col items-center justify-center">
           <h1 className="text-4xl p-2">📃</h1>
-          <h1 className="text-xl">No Contributions</h1>
+          <h1 className="text-xl">No Contributions test</h1>
         </div>
       )}
     </div>
