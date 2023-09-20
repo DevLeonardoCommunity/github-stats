@@ -2,7 +2,7 @@
 
 <!-- prettier-ignore-start -->
 <!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
-[![All Contributors](https://img.shields.io/badge/all_contributors-8-orange.svg?style=flat-square)](#contributors-)
+[![All Contributors](https://img.shields.io/badge/all_contributors-9-orange.svg?style=flat-square)](#contributors-)
 <!-- ALL-CONTRIBUTORS-BADGE:END -->
 <!-- prettier-ignore-end -->
 
@@ -66,6 +66,7 @@ Thanks for reading and happy coding!
     </tr>
     <tr>
       <td align="center" valign="top" width="14.28%"><a href="https://github.com/Agrimaagrawal"><img src="https://avatars.githubusercontent.com/u/84567933?v=4?s=100" width="100px;" alt="Agrima Agrawal"/><br /><sub><b>Agrima Agrawal</b></sub></a><br /><a href="https://github.com/Balastrong/github-stats/issues?q=author%3AAgrimaagrawal" title="Bug reports">🐛</a></td>
+      <td align="center" valign="top" width="14.28%"><a href="https://www.linkedin.com/in/hicham-essaidi-840b11288/"><img src="https://avatars.githubusercontent.com/u/85809218?v=4?s=100" width="100px;" alt="hicham essaidi"/><br /><sub><b>hicham essaidi</b></sub></a><br /><a href="https://github.com/Balastrong/github-stats/commits?author=heshamsadi" title="Code">💻</a></td>
     </tr>
   </tbody>
 </table>

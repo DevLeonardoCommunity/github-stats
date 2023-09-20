@@ -90,7 +90,7 @@ export default function Stats() {
             <div className="dropdown">
               <label
                 tabIndex={0}
-                className="bg-blue-500 p-2 m-1 rounded hover:bg-blue-900"
+                className="block w-fit bg-blue-500 p-2 m-1 rounded hover:bg-blue-900"
               >
                 Export as image
               </label>
