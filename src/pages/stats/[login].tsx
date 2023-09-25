@@ -22,6 +22,27 @@ export default function Stats() {
     repositories: PullRequestContributionsByRepository[];
     isLoading: boolean;
   } = useGitHubPullRequests(year, login as string);
+  const [searchQuery, setSearchQuery] = useState<string>("");
+
+  const filteredRepositories = useMemo(() => {
+    // putting the default value of the repositories
+    if (!searchQuery) {
+      return repositories;
+    }
+
+    // getting search query
+    const query = searchQuery.toLowerCase();
+    const filterRepos = repositories.filter((repoData) =>
+      repoData.repository.name.toLowerCase().includes(query)
+    );
+
+    // checking if there is no repositories
+    if (filterRepos.length === 0) {
+      return [];
+    }
+
+    return filterRepos;
+  }, [repositories, searchQuery]);
 
   const exportJSON = () => {
     const jsonStringData = JSON.stringify(repositories, null, 2);
@@ -117,13 +138,17 @@ export default function Stats() {
               </ul>
             </div>
             <div className="w-full grid xl:grid-cols-3 gap-3 mb-3 md:grid-cols-2">
-              {repositories?.map(({ repository, contributions }, i) => (
-                <RepositoryContributionsCard
-                  key={i + repository.name}
-                  repository={repository}
-                  contributions={contributions}
-                />
-              ))}
+              {filteredRepositories?.length > 0
+                ? filteredRepositories?.map(
+                    ({ repository, contributions }, i) => (
+                      <RepositoryContributionsCard
+                        key={i + repository.name}
+                        repository={repository}
+                        contributions={contributions}
+                      />
+                    )
+                  )
+                : "No repositories found"}
             </div>
           </>
         );
@@ -165,7 +190,7 @@ export default function Stats() {
     }
 
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [repositories, format]);
+  }, [repositories, format, searchQuery]);
 
   return (
     <div className="h-full w-full px-4 flex flex-col gap-4">
@@ -192,6 +217,17 @@ export default function Stats() {
                 />
               );
             })}
+          </div>
+          <div className="my-5">
+            <div className="my-5 flex items-center">
+              <input
+                type="text"
+                placeholder="Type here"
+                className="input input-bordered w-full max-w-xs"
+                value={searchQuery}
+                onChange={(e) => setSearchQuery(e.target.value)}
+              />
+            </div>
           </div>
         </div>
 
