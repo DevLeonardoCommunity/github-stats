@@ -1,21 +1,60 @@
+import { useEffect, useState } from "react";
+
 export function DarkModeDropdown() {
+  const [darkMode, setDarkMode] = useState(false);
+
+  useEffect(() => {
+    if (localStorage.theme === "light" || !("theme" in localStorage)) {
+      setDocumentElement("light");
+    } else {
+      setDocumentElement("custom-dark");
+    }
+  }, []);
+
+  function onClick($event: React.MouseEvent<HTMLLIElement>) {
+    $event.stopPropagation();
+    const li = $event.currentTarget as HTMLLIElement;
+    if (li.id === "light") {
+      setDocumentElement("light");
+    } else {
+      setDocumentElement("custom-dark");
+    }
+  }
+
+  const setDocumentElement = (theme: "light" | "custom-dark") => {
+    localStorage.theme = theme;
+    document.documentElement.dataset.theme = theme;
+
+    if (theme === "light") {
+      document.documentElement.classList.remove("dark");
+      setDarkMode(false);
+    } else {
+      document.documentElement.classList.add("dark");
+      setDarkMode(true);
+    }
+  };
+
   return (
     <>
       <div className="dropdown dropdown-bottom dropdown-end">
-        <label tabIndex={0} className="btn btn-circle btn-ghost m-1">
-          <LightMode />
+        <label
+          tabIndex={0}
+          className="btn btn-circle btn-ghost m-1"
+          data-testid="button"
+        >
+          {darkMode ? <DarkMode /> : <LightMode />}
         </label>
         <ul
           tabIndex={0}
-          className="dropdown-content z-[1] menu p-2 shadow bg-base-100 rounded-box w-52"
+          className="dropdown-content z-[1] menu p-2 shadow bg-base-100 rounded-box w-52 mt-3"
         >
-          <li>
-            <a>
+          <li id="light" onClick={onClick}>
+            <a data-testid="light-mode-option">
               <LightMode /> Light Mode
             </a>
           </li>
-          <li>
-            <a>
+          <li id="dark" onClick={onClick}>
+            <a data-testid="dark-mode-option">
               <DarkMode /> Dark Mode
             </a>
           </li>
@@ -30,6 +69,7 @@ const LightMode = () => (
     xmlns="http://www.w3.org/2000/svg"
     className="h-6 w-6"
     viewBox="0 -960 960 960"
+    data-testid="light-mode"
   >
     <path
       d="M480-360q50 0 85-35t35-85q0-50-35-85t-85-35q-50 0-85 35t-35 85q0 50 35 85t85 35Zm0 80q-83 0-141.5-58.5T280-480q0-83 
@@ -51,6 +91,7 @@ const DarkMode = () => (
     xmlns="http://www.w3.org/2000/svg"
     className="h-6 w-6"
     viewBox="0 -960 960 960"
+    data-testid="dark-mode"
   >
     <path
       d="M480-120q-150 0-255-105T120-480q0-150 105-255t255-105q14 0 27.5 1t26.5 3q-41 29-65.5 75.5T444-660q0 90 63 
