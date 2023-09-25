@@ -2,6 +2,7 @@ import { MAIN_LOGIN_PROVIDER } from "@/pages/api/auth/[...nextauth]";
 import { signIn, signOut, useSession } from "next-auth/react";
 import Image from "next/image";
 import Link from "next/link";
+import { DarkModeDropdown } from "./DarkModeDropdown";
 
 export const Header = () => {
   const { data: session, status } = useSession();
@@ -59,6 +60,7 @@ export const Header = () => {
             </ul>
           </div>
           <div className="navbar-end">
+            <DarkModeDropdown />
             {status === "authenticated" ? (
               <div className="dropdown dropdown-end">
                 <label tabIndex={0} className="btn btn-ghost btn-circle avatar">
