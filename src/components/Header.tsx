@@ -42,12 +42,12 @@ export const Header = () => {
                 )}
               </ul>
             </div>
-            <Link href="/" className="btn btn-ghost normal-case text-xl">
+            <Link href="/" className="btn btn-ghost normal-case text-xl text-slate-100">
               GitHub Stats
             </Link>
           </div>
           <div className="navbar-center hidden lg:flex">
-            <ul className="menu menu-horizontal px-1">
+            <ul className="menu menu-horizontal px-1 text-slate-100">
               <li>
                 <Link href="/">Home</Link>
               </li>
@@ -76,16 +76,16 @@ export const Header = () => {
                   className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-slate-700 rounded-box w-52"
                 >
                   <li>
-                    <a>
+                    <a className="text-slate-100">
                       Settings
                       <span className="badge">Soon</span>
                     </a>
                   </li>
                   <li>
-                    <Link href={`/profile`}>Profile</Link>
+                    <Link href={`/profile`} className="text-slate-100">Profile</Link>
                   </li>
                   <li>
-                    <a onClick={() => signOut()}>Logout</a>
+                    <a onClick={() => signOut()} className="text-slate-100">Logout</a>
                   </li>
                 </ul>
               </div>
