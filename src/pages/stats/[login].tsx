@@ -36,11 +36,6 @@ export default function Stats() {
       repoData.repository.name.toLowerCase().includes(query)
     );
 
-    // checking if there is no repositories
-    if (filterRepos.length === 0) {
-      return [];
-    }
-
     return filterRepos;
   }, [repositories, searchQuery]);
 
