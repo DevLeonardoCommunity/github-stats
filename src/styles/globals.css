@@ -2,6 +2,18 @@
 @tailwind components;
 @tailwind utilities;
 
+@layer components {
+
+  .light-mode {
+    @apply bg-gradient-to-b from-light-start
+  }
+
+  .dark-mode {
+    @apply bg-gradient-to-b from-black to-black text-white
+  }
+}
+
+/*
 :root {
   --foreground-rgb: 0, 0, 0;
   --background-start-rgb: 214, 219, 220;
@@ -24,7 +36,7 @@ body {
       rgb(var(--background-end-rgb))
     )
     rgb(var(--background-start-rgb));
-}
+}*/
 
 body,
 html {

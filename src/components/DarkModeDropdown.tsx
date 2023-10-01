@@ -1,10 +1,17 @@
 import { useEffect, useState } from "react";
 
+type DarkModeOptions = "custom-dark" | "light" | "system";
+
 export function DarkModeDropdown() {
-  const [darkMode, setDarkMode] = useState(false);
+  const [darkModeOption, setDarkModeOption] =
+    useState<DarkModeOptions>("light");
 
   useEffect(() => {
-    if (localStorage.theme === "light" || !("theme" in localStorage)) {
+    if (
+      localStorage.theme === "light" ||
+      (!("theme" in localStorage) &&
+        !window.matchMedia("(prefers-color-scheme:dark)").matches)
+    ) {
       setDocumentElement("light");
     } else {
       setDocumentElement("custom-dark");
@@ -14,25 +21,17 @@ export function DarkModeDropdown() {
   function onClick($event: React.MouseEvent<HTMLLIElement>) {
     $event.stopPropagation();
     const li = $event.currentTarget as HTMLLIElement;
-    if (li.id === "light") {
-      setDocumentElement("light");
-    } else {
-      setDocumentElement("custom-dark");
-    }
+    setDocumentElement(li.id as DarkModeOptions);
   }
 
-  const setDocumentElement = (theme: "light" | "custom-dark") => {
-    localStorage.theme = theme;
-    document.documentElement.dataset.theme = theme;
-
-    if (theme === "light") {
-      document.documentElement.classList.remove("dark");
-      setDarkMode(false);
-    } else {
-      document.documentElement.classList.add("dark");
-      setDarkMode(true);
-    }
+  const setDocumentElement = (theme: DarkModeOptions) => {
+    setDarkModeOption(theme);
+    theme === "system"
+      ? setSystemPreferenceTheme()
+      : setLightOrDarkTheme(theme);
   };
+
+  const buttonIcon = getButtonIconByOption(darkModeOption);
 
   return (
     <>
@@ -40,9 +39,9 @@ export function DarkModeDropdown() {
         <label
           tabIndex={0}
           className="btn btn-circle btn-ghost m-1"
-          data-testid="button"
+          data-testid="darkModeButton"
         >
-          {darkMode ? <DarkMode /> : <LightMode />}
+          {buttonIcon}
         </label>
         <ul
           tabIndex={0}
@@ -53,9 +52,14 @@ export function DarkModeDropdown() {
               <LightMode /> Light Mode
             </a>
           </li>
-          <li id="dark" onClick={onClick}>
+          <li id="custom-dark" onClick={onClick}>
             <a data-testid="dark-mode-option">
               <DarkMode /> Dark Mode
+            </a>
+          </li>
+          <li id="system" onClick={onClick}>
+            <a data-testid="system-mode-option">
+              <SystemPreference /> System Preference
             </a>
           </li>
         </ul>
@@ -100,3 +104,47 @@ const DarkMode = () => (
     />
   </svg>
 );
+
+const SystemPreference = () => (
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    viewBox="0 -960 960 960"
+    className="h-6 w-6"
+  >
+    <path
+      d="M320-120v-80h80v-80H160q-33 0-56.5-23.5T80-360v-400q0-33 23.5-56.5T160-840h640q33 0 56.5 23.5T880-760v400q0 33-23.5 
+      56.5T800-280H560v80h80v80H320ZM160-360h640v-400H160v400Zm0 0v-400 400Z"
+    />
+  </svg>
+);
+
+const getButtonIconByOption = (option: DarkModeOptions) => {
+  switch (option) {
+    case "light": {
+      return <LightMode />;
+    }
+    case "custom-dark": {
+      return <DarkMode />;
+    }
+    case "system": {
+      return <SystemPreference />;
+    }
+  }
+};
+
+const setSystemPreferenceTheme = () => {
+  const isDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+  localStorage.removeItem("theme");
+  document.documentElement.dataset.theme = isDark ? "custom-dark" : "light";
+  isDark
+    ? document.documentElement.classList.add("dark")
+    : document.documentElement.classList.remove("dark");
+};
+
+const setLightOrDarkTheme = (theme: "custom-dark" | "light") => {
+  localStorage.theme = theme;
+  document.documentElement.dataset.theme = theme;
+  theme === "custom-dark"
+    ? document.documentElement.classList.add("dark")
+    : document.documentElement.classList.remove("dark");
+};
