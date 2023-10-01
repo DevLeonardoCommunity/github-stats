@@ -36,7 +36,7 @@ describe("DarkModeDropdown", () => {
     const systemSvg = buttonEdited.firstElementChild as SVGAElement;
     const testidValue = systemSvg.dataset.testid;
 
-    expect(testidValue).equal("system-option");
+    expect(testidValue).equal("system-mode");
     const theme = localStorage.getItem("theme");
     expect(theme).toBeNull();
   });
