@@ -3,13 +3,12 @@
 @tailwind utilities;
 
 @layer components {
-
   .light-mode {
-    @apply bg-gradient-to-b from-light-start
+    @apply bg-gradient-to-b from-light-start;
   }
 
   .dark-mode {
-    @apply bg-gradient-to-b from-black to-black text-white
+    @apply bg-gradient-to-b from-black to-black text-white;
   }
 }
 
