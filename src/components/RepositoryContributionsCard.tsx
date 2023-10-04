@@ -10,7 +10,7 @@ export const RepositoryContributionsCard = ({
   contributions: Contributions;
 }) => {
   return (
-    <div className="card bg-slate-700">
+    <div className="card bg-base-100">
       <div className="card-body">
         <h2 className="card-title flex justify-between">
           <div className="flex justify-center items-center gap-2">
