@@ -1,4 +1,5 @@
 import { toPng } from "html-to-image";
+import { toast } from "react-toastify";
 
 export const exportAsImage = async (
   selector: string,
@@ -28,8 +29,16 @@ export const exportAsImage = async (
           URL.revokeObjectURL(url);
           a.remove();
         }
-        if (option === "clipboard")
-          navigator.clipboard.write([new ClipboardItem({ "image/png": blob })]);
+        if (option === "clipboard") {
+          navigator.clipboard
+            .write([new ClipboardItem({ "image/png": blob })])
+            .then(() => {
+              toast.success("Image copied to clipboard");
+            })
+            .catch(() => {
+              toast.error("Failed to copy image to clipboard");
+            });
+        }
       }
     });
     canvas.remove();
