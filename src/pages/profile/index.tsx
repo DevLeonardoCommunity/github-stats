@@ -16,12 +16,12 @@ export default function Profile() {
     <div>
       <div className="flex justify-center">
         <div className="dropdown pt-10 ">
-          <label
+          <button
             tabIndex={0}
-            className="bg-blue-500 p-2 m-1 rounded hover:bg-blue-900 cursor-pointer"
+            className="btn btn-primary p-2 m-1 rounded cursor-pointer"
           >
             Export as image
-          </label>
+          </button>
           <ul
             tabIndex={0}
             className="dropdown-content menu p-2 shadow bg-base-100 rounded-box w-52 z-20"
