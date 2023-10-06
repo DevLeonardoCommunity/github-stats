@@ -9,7 +9,6 @@ import Link from "next/link";
 import { exportAsImage } from "@/utils";
 import GitHubCalendar from "react-github-calendar";
 import { Tooltip as ReactTooltip } from "react-tooltip";
-import "react-tooltip/dist/react-tooltip.css";
 
 interface Activity {
   date: string;
@@ -24,22 +23,16 @@ export default function Profile() {
   if (!data) return "Loading...";
 
   const selectLastHalfYear = (contributions: Activity[]) => {
-    const currentMonth = new Date().getMonth();
     const shownMonths = 6;
 
     const startDate = new Date();
-    startDate.setMonth(startDate.getMonth() - 5);
+    startDate.setMonth(startDate.getMonth() - shownMonths);
+    startDate.setHours(0, 0, 0, 0);
 
-    return contributions.filter((activity: Activity) => {
-      const date = new Date(activity.date);
-      const monthOfDay = date.getMonth();
-
-      return (
-        monthOfDay > currentMonth - shownMonths &&
-        monthOfDay <= currentMonth &&
+    return contributions.filter(
+      (activity: Activity) =>
         startDate.getTime() <= new Date(activity.date).getTime()
-      );
-    });
+    );
   };
 
   return (
