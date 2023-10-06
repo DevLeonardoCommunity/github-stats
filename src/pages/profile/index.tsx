@@ -1,3 +1,4 @@
+import React, { useState } from "react";
 import {
   UserProfile,
   userProfile as userProfileQuery,
@@ -7,7 +8,8 @@ import Image from "next/image";
 import Link from "next/link";
 import { exportAsImage } from "@/utils";
 import GitHubCalendar from "react-github-calendar";
-import { useState } from "react";
+import { Tooltip as ReactTooltip } from "react-tooltip";
+import "react-tooltip/dist/react-tooltip.css";
 
 interface Activity {
   date: string;
@@ -22,19 +24,17 @@ export default function Profile() {
   if (!data) return "Loading...";
 
   const selectLastHalfYear = (contributions: Activity[]) => {
-    const currentYear = new Date().getFullYear();
     const currentMonth = new Date().getMonth();
     const shownMonths = 6;
 
     const startDate = new Date();
-    startDate.setMonth(startDate.getMonth() - 6);
+    startDate.setMonth(startDate.getMonth() - 5);
 
     return contributions.filter((activity: Activity) => {
       const date = new Date(activity.date);
       const monthOfDay = date.getMonth();
 
       return (
-        date.getFullYear() === currentYear &&
         monthOfDay > currentMonth - shownMonths &&
         monthOfDay <= currentMonth &&
         startDate.getTime() <= new Date(activity.date).getTime()
@@ -111,7 +111,6 @@ export default function Profile() {
                   Stars Count: {data.user.starsCount.totalCount}
                 </p>
               </div>
-
               <p>{data.user.bio}</p>
               <div className="card-actions mt-1">
                 <Link
@@ -131,15 +130,23 @@ export default function Profile() {
                   loading={!data}
                   colorScheme="light"
                   hideColorLegend
+                  showWeekdayLabels
                   labels={{
                     totalCount: "{{count}} contributions in the last 6 months",
                   }}
+                  renderBlock={(block, activity) =>
+                    React.cloneElement(block, {
+                      "data-tooltip-id": "react-tooltip",
+                      "data-tooltip-html": `${activity.count} activities on ${activity.date}`,
+                    })
+                  }
                 />
               )}
             </div>
           </div>
         </div>
       </div>
+      <ReactTooltip id="react-tooltip" />
     </div>
   );
 }
