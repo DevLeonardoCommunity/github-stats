@@ -17,7 +17,7 @@ interface Activity {
 
 export default function Profile() {
   const { data } = useGitHubQuery<UserProfile>(userProfileQuery);
-  const [checked, setChecked] = useState<boolean>(false);
+  const [showActivities, setShowActivities] = useState<boolean>(false);
 
   if (!data) return "Loading...";
 
@@ -26,6 +26,9 @@ export default function Profile() {
     const currentMonth = new Date().getMonth();
     const shownMonths = 6;
 
+    const startDate = new Date();
+    startDate.setMonth(startDate.getMonth() - 6);
+
     return contributions.filter((activity: Activity) => {
       const date = new Date(activity.date);
       const monthOfDay = date.getMonth();
@@ -33,7 +36,8 @@ export default function Profile() {
       return (
         date.getFullYear() === currentYear &&
         monthOfDay > currentMonth - shownMonths &&
-        monthOfDay <= currentMonth
+        monthOfDay <= currentMonth &&
+        startDate.getTime() <= new Date(activity.date).getTime()
       );
     });
   };
@@ -78,8 +82,8 @@ export default function Profile() {
             <input
               type="checkbox"
               className="toggle toggle-primary"
-              checked={checked}
-              onChange={(e) => setChecked(e.target.checked)}
+              checked={showActivities}
+              onChange={(e) => setShowActivities(e.target.checked)}
             />
           </label>
         </div>
@@ -118,7 +122,7 @@ export default function Profile() {
                   GitHub
                 </Link>
               </div>
-              {checked && (
+              {showActivities && (
                 <GitHubCalendar
                   username={data.user.login}
                   transformData={selectLastHalfYear}
@@ -128,7 +132,7 @@ export default function Profile() {
                   colorScheme="light"
                   hideColorLegend
                   labels={{
-                    totalCount: "{{count}} contributions in the last half year",
+                    totalCount: "{{count}} contributions in the last 6 months",
                   }}
                 />
               )}
