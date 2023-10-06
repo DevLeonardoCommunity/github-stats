@@ -1,7 +1,9 @@
 import { Contributions, Repository } from "@/types/github";
 import Image from "next/image";
 import Link from "next/link";
-
+import { FaCodeMerge } from "react-icons/fa6";
+import { GoIssueOpened } from "react-icons/go";
+import { AiOutlineCloseCircle } from "react-icons/ai";
 export const RepositoryContributionsCard = ({
   repository,
   contributions: { totalCount, nodes },
@@ -46,7 +48,13 @@ export const RepositoryContributionsCard = ({
                     : "bg-green-500"
                 }`}
               >
-                {state}
+                {state === "MERGED" ? (
+                  <FaCodeMerge></FaCodeMerge>
+                ) : state == "CLOSED" ? (
+                  <AiOutlineCloseCircle></AiOutlineCloseCircle>
+                ) : (
+                  <GoIssueOpened></GoIssueOpened>
+                )}
               </span>
             </div>
           ))}
