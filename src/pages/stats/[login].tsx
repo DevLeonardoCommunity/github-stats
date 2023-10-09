@@ -1,10 +1,10 @@
 import { RepositoryContributionsCard } from "@/components";
 import { useGitHubPullRequests } from "@/hooks";
+import { PullRequestContributionsByRepository } from "@/types/github";
+import { exportAsImage } from "@/utils";
 import { useSession } from "next-auth/react";
 import { useRouter } from "next/router";
 import { useMemo, useState } from "react";
-import { exportAsImage } from "@/utils";
-import { PullRequestContributionsByRepository } from "@/types/github";
 
 const yearsRange = 4;
 
@@ -214,16 +214,15 @@ export default function Stats() {
               );
             })}
           </div>
-          <div className="my-5">
-            <div className="my-5 flex items-center">
-              <input
-                type="text"
-                placeholder="Type here"
-                className="input input-bordered w-full max-w-xs"
-                value={searchQuery}
-                onChange={(e) => setSearchQuery(e.target.value)}
-              />
-            </div>
+          <div className="my-5 flex flex-col sm:items-start items-center">
+            <label>Search</label>
+            <input
+              type="text"
+              placeholder="Type here"
+              className="input input-bordered w-full max-w-xs"
+              value={searchQuery}
+              onChange={(e) => setSearchQuery(e.target.value)}
+            />
           </div>
         </div>
 
