@@ -1,10 +1,10 @@
 import { RepositoryContributionsCard } from "@/components";
 import { useGitHubPullRequests } from "@/hooks";
+import { PullRequestContributionsByRepository } from "@/types/github";
+import { exportAsImage } from "@/utils";
 import { useSession } from "next-auth/react";
 import { useRouter } from "next/router";
 import { useMemo, useState } from "react";
-import { exportAsImage } from "@/utils";
-import { PullRequestContributionsByRepository } from "@/types/github";
 
 const yearsRange = 4;
 
@@ -104,12 +104,13 @@ export default function Stats() {
         return (
           <>
             <div className="dropdown">
-              <label
+              <button
                 tabIndex={0}
-                className="block w-fit bg-blue-500 p-2 m-1 rounded hover:bg-blue-900"
+                role="button"
+                className="block w-fit btn btn-primary m-1 p-2 rounded"
               >
                 Export as image
-              </label>
+              </button>
               <ul
                 tabIndex={0}
                 className="dropdown-content z-[1] menu p-2 shadow bg-base-100 rounded-box w-52"
@@ -151,7 +152,7 @@ export default function Stats() {
         return (
           <div>
             <button
-              className="bg-blue-500 p-2 m-1 rounded hover:bg-blue-900"
+              className="btn btn-primary p-2 m-1 rounded"
               onClick={exportJSON}
             >
               Export as JSON
@@ -165,7 +166,7 @@ export default function Stats() {
         return (
           <div>
             <button
-              className="bg-blue-500 p-2 m-1 rounded hover:bg-blue-900"
+              className="btn btn-primary p-2 m-1 rounded"
               onClick={exportText}
             >
               Export as Text
@@ -213,16 +214,15 @@ export default function Stats() {
               );
             })}
           </div>
-          <div className="my-5">
-            <div className="my-5 flex items-center">
-              <input
-                type="text"
-                placeholder="Type here"
-                className="input input-bordered w-full max-w-xs"
-                value={searchQuery}
-                onChange={(e) => setSearchQuery(e.target.value)}
-              />
-            </div>
+          <div className="my-5 flex flex-col sm:items-start items-center">
+            <label>Search</label>
+            <input
+              type="text"
+              placeholder="Type here"
+              className="input input-bordered w-full max-w-xs"
+              value={searchQuery}
+              onChange={(e) => setSearchQuery(e.target.value)}
+            />
           </div>
         </div>
 

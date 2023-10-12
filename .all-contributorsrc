@@ -1,5 +1,7 @@
 {
-  "files": ["README.md"],
+  "files": [
+    "README.md"
+  ],
   "imageSize": 100,
   "commit": false,
   "commitType": "docs",
@@ -10,63 +12,105 @@
       "name": "Leonardo Montini",
       "avatar_url": "https://avatars.githubusercontent.com/u/7253929?v=4",
       "profile": "https://leonardomontini.dev/",
-      "contributions": ["projectManagement", "code"]
+      "contributions": [
+        "projectManagement",
+        "code"
+      ]
     },
     {
       "login": "theanantchoubey",
       "name": "Anant Choubey",
       "avatar_url": "https://avatars.githubusercontent.com/u/91460022?v=4",
       "profile": "https://bio.link/anantchoubey",
-      "contributions": ["doc", "bug", "code"]
+      "contributions": [
+        "doc",
+        "bug",
+        "code"
+      ]
     },
     {
       "login": "priyankarpal",
       "name": "Priyankar Pal ",
       "avatar_url": "https://avatars.githubusercontent.com/u/88102392?v=4",
       "profile": "http://priyank.live",
-      "contributions": ["doc", "code", "ideas"]
+      "contributions": [
+        "doc",
+        "code",
+        "ideas"
+      ]
     },
     {
       "login": "piyushjha0409",
       "name": "Piyush Jha",
       "avatar_url": "https://avatars.githubusercontent.com/u/73685420?v=4",
       "profile": "https://github.com/piyushjha0409",
-      "contributions": ["code"]
+      "contributions": [
+        "code"
+      ]
     },
     {
       "login": "dimassibassem",
       "name": "Dimassi Bassem",
       "avatar_url": "https://avatars.githubusercontent.com/u/75867744?v=4",
       "profile": "https://www.bassemdimassi.tech/",
-      "contributions": ["design", "code"]
+      "contributions": [
+        "design",
+        "code"
+      ]
     },
     {
       "login": "jakubfronczyk",
       "name": "Jakub Fronczyk",
       "avatar_url": "https://avatars.githubusercontent.com/u/71935020?v=4",
       "profile": "http://jakubfronczyk.com",
-      "contributions": ["code"]
+      "contributions": [
+        "code"
+      ]
     },
     {
       "login": "black-arm",
       "name": "Antonio Basile",
       "avatar_url": "https://avatars.githubusercontent.com/u/68558867?v=4",
       "profile": "https://github.com/black-arm",
-      "contributions": ["code"]
+      "contributions": [
+        "code"
+      ]
     },
     {
       "login": "Agrimaagrawal",
       "name": "Agrima Agrawal",
       "avatar_url": "https://avatars.githubusercontent.com/u/84567933?v=4",
       "profile": "https://github.com/Agrimaagrawal",
-      "contributions": ["bug"]
+      "contributions": [
+        "bug"
+      ]
     },
     {
       "login": "heshamsadi",
       "name": "hicham essaidi",
       "avatar_url": "https://avatars.githubusercontent.com/u/85809218?v=4",
       "profile": "https://www.linkedin.com/in/hicham-essaidi-840b11288/",
-      "contributions": ["code"]
+      "contributions": [
+        "code"
+      ]
+    },
+    {
+      "login": "luckyklyist",
+      "name": "Anupam",
+      "avatar_url": "https://avatars.githubusercontent.com/u/35479077?v=4",
+      "profile": "https://www.anupamac.me/",
+      "contributions": [
+        "code"
+      ]
+    },
+    {
+      "login": "thititongumpun",
+      "name": "thititongumpun",
+      "avatar_url": "https://avatars.githubusercontent.com/u/55313215?v=4",
+      "profile": "http://thiti.wcydtt.co",
+      "contributions": [
+        "code"
+      ]
     }
   ],
   "contributorsPerLine": 7,
@@ -76,4 +120,3 @@
   "projectName": "github-stats",
   "projectOwner": "Balastrong"
 }
-

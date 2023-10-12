@@ -2,6 +2,7 @@ import { MAIN_LOGIN_PROVIDER } from "@/pages/api/auth/[...nextauth]";
 import { signIn, signOut, useSession } from "next-auth/react";
 import Image from "next/image";
 import Link from "next/link";
+import { DarkModeDropdown } from "./DarkModeDropdown";
 
 export const Header = () => {
   const { data: session, status } = useSession();
@@ -9,7 +10,7 @@ export const Header = () => {
   return (
     <>
       <header>
-        <div className="navbar bg-slate-700">
+        <div className="navbar bg-base-100">
           <div className="navbar-start">
             <div className="dropdown">
               <label tabIndex={0} className="btn btn-ghost lg:hidden">
@@ -30,7 +31,7 @@ export const Header = () => {
               </label>
               <ul
                 tabIndex={0}
-                className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-slate-700 rounded-box w-52"
+                className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52"
               >
                 <li>
                   <Link href="/">Home</Link>
@@ -59,6 +60,7 @@ export const Header = () => {
             </ul>
           </div>
           <div className="navbar-end">
+            <DarkModeDropdown />
             {status === "authenticated" ? (
               <div className="dropdown dropdown-end">
                 <label tabIndex={0} className="btn btn-ghost btn-circle avatar">
@@ -73,7 +75,7 @@ export const Header = () => {
                 </label>
                 <ul
                   tabIndex={0}
-                  className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-slate-700 rounded-box w-52"
+                  className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52"
                 >
                   <li>
                     <a>
