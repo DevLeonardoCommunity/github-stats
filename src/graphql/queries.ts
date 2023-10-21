@@ -12,6 +12,7 @@ query ($login: String!, $from: DateTime!) {
                             id
                             title
                             state
+                            url
                         }
                     }
                 }
