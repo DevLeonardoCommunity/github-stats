@@ -34,9 +34,11 @@ export const RepositoryContributionsCard = ({
           <div className="rounded p-1 outline outline-1">{totalCount}</div>
         </h2>
         <div className="max-h-[200px] overflow-auto flex flex-col gap-1 px-1">
-          {nodes?.map(({ pullRequest: { state, title, id } }: any) => (
+          {nodes?.map(({ pullRequest: { state, title, id, url } }: any) => (
             <div key={id} className="flex justify-between gap-2">
-              <span>{title}</span>
+              <a href={url} target="_blank">
+                {title}
+              </a>
               <span
                 className={`h-fit rounded p-1 ${
                   state === "MERGED"
