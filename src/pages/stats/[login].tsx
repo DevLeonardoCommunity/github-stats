@@ -5,8 +5,6 @@ import { exportAsImage } from "@/utils";
 import { useSession } from "next-auth/react";
 import { useRouter } from "next/router";
 import { useMemo, useState } from "react";
-import { exportAsImage } from "@/utils";
-import { PullRequestContributionsByRepository } from "@/types/github";
 import CardSkeleton from "@/components/CardSkeleton";
 
 const yearsRange = 4;
