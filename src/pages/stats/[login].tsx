@@ -5,6 +5,7 @@ import { exportAsImage } from "@/utils";
 import { useSession } from "next-auth/react";
 import { useRouter } from "next/router";
 import { useMemo, useState } from "react";
+import CardSkeleton from "@/components/CardSkeleton";
 
 const yearsRange = 4;
 
@@ -258,7 +259,13 @@ export default function Stats() {
         </div>
       </div>
       {isLoading ? (
-        <div>Loading...</div>
+        <div className="w-full grid xl:grid-cols-3 gap-3 mb-3 md:grid-cols-2 ">
+          {Array.from({ length: 10 }, (_, index) => (
+            <div key={index}>
+              <CardSkeleton />
+            </div>
+          ))}
+        </div>
       ) : repositories?.length > 0 ? (
         formatRender
       ) : (
