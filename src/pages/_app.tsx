@@ -19,7 +19,7 @@ export default function App({
         <RootLayout>
           <SkeletonTheme baseColor="#202020" highlightColor="#444">
             <Component {...pageProps} />
-             <ToastContainer />
+            <ToastContainer />
           </SkeletonTheme>
         </RootLayout>
       </SessionProvider>
