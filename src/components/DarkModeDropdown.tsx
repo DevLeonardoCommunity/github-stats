@@ -1,22 +1,10 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 
 type DarkModeOptions = "custom-dark" | "light" | "system";
 
 export function DarkModeDropdown() {
   const [darkModeOption, setDarkModeOption] =
     useState<DarkModeOptions>("light");
-
-  useEffect(() => {
-    if (
-      localStorage.theme === "light" ||
-      (!("theme" in localStorage) &&
-        !window.matchMedia("(prefers-color-scheme:dark)").matches)
-    ) {
-      setDocumentElement("light");
-    } else {
-      setDocumentElement("custom-dark");
-    }
-  }, []);
 
   function onClick($event: React.MouseEvent<HTMLLIElement>) {
     $event.stopPropagation();
