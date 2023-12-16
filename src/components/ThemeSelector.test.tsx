@@ -1,18 +1,18 @@
 import { fireEvent, render, screen } from "@testing-library/react";
 import { describe, test, expect } from "vitest";
-import { DarkModeDropdown } from "./DarkModeDropdown";
+import { ThemeSelector } from "./ThemeSelector";
 
-describe("DarkModeDropdown", () => {
+describe("ThemeSelector", () => {
   test("should change light Icon if click Dark mode", () => {
-    render(<DarkModeDropdown />);
+    render(<ThemeSelector />);
 
-    const button = screen.getByTestId("darkModeButton");
+    const button = screen.getByTestId("themeSelectorButton");
     fireEvent.click(button);
 
     const darkModeItem = screen.getByTestId("dark-mode-option");
     fireEvent.click(darkModeItem);
 
-    const buttonEdited = screen.getByTestId("darkModeButton");
+    const buttonEdited = screen.getByTestId("themeSelectorButton");
     const darkModeSvg = buttonEdited.firstElementChild as SVGElement;
     const testidValue = darkModeSvg.dataset.testid;
 
@@ -25,14 +25,14 @@ describe("DarkModeDropdown", () => {
   });
 
   test("should change to System Preference", () => {
-    render(<DarkModeDropdown />);
+    render(<ThemeSelector />);
 
-    const button = screen.getByTestId("darkModeButton");
+    const button = screen.getByTestId("themeSelectorButton");
     fireEvent.click(button);
     const systemItem = screen.getByTestId("system-mode-option");
     fireEvent.click(systemItem);
 
-    const buttonEdited = screen.getByTestId("darkModeButton");
+    const buttonEdited = screen.getByTestId("themeSelectorButton");
     const systemSvg = buttonEdited.firstElementChild as SVGAElement;
     const testidValue = systemSvg.dataset.testid;
 
