@@ -1,10 +1,18 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 type DarkModeOptions = "custom-dark" | "light" | "system";
 
 export function DarkModeDropdown() {
-  const [darkModeOption, setDarkModeOption] =
-    useState<DarkModeOptions>("light");
+  const [darkModeOption, setDarkModeOption] = useState<
+    DarkModeOptions | undefined
+  >(undefined);
+
+  useEffect(() => {
+    const theme = localStorage.getItem("theme") as DarkModeOptions;
+    if (theme) {
+      setDarkModeOption(theme);
+    }
+  }, []);
 
   function onClick($event: React.MouseEvent<HTMLLIElement>) {
     $event.stopPropagation();
@@ -107,17 +115,16 @@ const SystemPreference = () => (
   </svg>
 );
 
-const getButtonIconByOption = (option: DarkModeOptions) => {
+const getButtonIconByOption = (option: DarkModeOptions | undefined) => {
   switch (option) {
-    case "light": {
+    case "light":
       return <LightMode />;
-    }
-    case "custom-dark": {
+
+    case "custom-dark":
       return <DarkMode />;
-    }
-    case "system": {
+
+    default:
       return <SystemPreference />;
-    }
   }
 };
 

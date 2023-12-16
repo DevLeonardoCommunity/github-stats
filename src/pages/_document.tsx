@@ -10,10 +10,13 @@ export default function Document() {
             __html: `
               (function() {
                 var theme = localStorage.getItem('theme');
-                document.documentElement.dataset.theme = theme;
-                theme === "custom-dark"
-                  ? document.documentElement.classList.add("dark")
-                  : document.documentElement.classList.remove("dark");
+                if (theme === "custom-dark" || (!theme && window.matchMedia("(prefers-color-scheme:dark)").matches)) {
+                  document.documentElement.dataset.theme = "custom-dark";
+                  document.documentElement.classList.add("dark")
+                } else {
+                  document.documentElement.dataset.theme = "light";
+                  document.documentElement.classList.remove("dark");
+                }
               })()
             `,
           }}
