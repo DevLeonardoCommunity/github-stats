@@ -2,7 +2,7 @@ describe("DarkMode test", () => {
   beforeEach(() => {
     cy.visit("http://localhost:3000");
     cy.wait(3000);
-    cy.get('[data-testid="darkModeButton"]').click();
+    cy.get('[data-testid="themeSelectorButton"]').click();
   });
 
   it("should select light Mode", () => {
@@ -27,7 +27,7 @@ describe("DarkMode test", () => {
       },
     });
     cy.wait(3000);
-    cy.get('[data-testid="darkModeButton"]').click();
+    cy.get('[data-testid="themeSelectorButton"]').click();
     cy.get('[data-testid="system-mode-option"]').click();
     cy.get("html").should("have.data", "theme", "custom-dark");
   });
