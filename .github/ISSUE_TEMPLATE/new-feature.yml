@@ -19,24 +19,17 @@ body:
       label: It should be implemented because
       placeholder: It will allow to do Y that is needed for Z
   - type: textarea
-    id: alternatives
-    attributes:
-      label: Did you think about any alternative?
-      placeholder: We could do A or B instead
-  - type: textarea
     id: context
     attributes:
       label: Additional context
       placeholder: |
         Add any other context or screenshots about the feature request here.
-  - type: checkboxes
-    id: checks
+  - type: dropdown
+    id: assign
     attributes:
-      label: Extra fields
+      label: "Would you like to work on this issue?"
       options:
-        - label: I have used the search function to check if an issue already exists
-          required: true
-        - label: I'd like to work on this issue
+        - "Yes"
   - type: markdown
     attributes:
       value: |

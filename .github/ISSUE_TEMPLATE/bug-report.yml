@@ -28,20 +28,16 @@ body:
     attributes:
       label: What was the expected result?
       placeholder: I expected this to happen
-    validations:
-      required: true
   - type: textarea
     id: screenshots
     attributes:
       label: Put here any screenshots or videos (optional)
-  - type: checkboxes
-    id: checks
+  - type: dropdown
+    id: assign
     attributes:
-      label: Extra fields
+      label: "Would you like to work on this issue?"
       options:
-        - label: I have used the search function to check if an issue already exists
-          required: true
-        - label: I'd like to work on this issue
+        - "Yes"
   - type: markdown
     attributes:
       value: |
