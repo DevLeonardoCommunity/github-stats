@@ -1,6 +1,9 @@
 import { Contributions, Repository } from "@/types/github";
 import Image from "next/image";
 import Link from "next/link";
+import { FaCodeMerge } from "react-icons/fa6";
+import { IoIosCloseCircleOutline } from "react-icons/io";
+import { GoIssueOpened } from "react-icons/go";
 
 export const RepositoryContributionsCard = ({
   repository,
@@ -35,7 +38,7 @@ export const RepositoryContributionsCard = ({
         </h2>
         <div className="max-h-[200px] overflow-auto flex flex-col gap-1 px-1">
           {nodes?.map(({ pullRequest: { state, title, id, url } }: any) => (
-            <div key={id} className="flex justify-between gap-2">
+            <div key={id} className="flex items-center justify-between gap-2">
               <a href={url} target="_blank">
                 {title}
               </a>
@@ -48,7 +51,13 @@ export const RepositoryContributionsCard = ({
                     : "bg-green-500"
                 }`}
               >
-                {state}
+                {state === "MERGED" ? (
+                  <FaCodeMerge size={18} />
+                ) : state === "CLOSED" ? (
+                  <IoIosCloseCircleOutline size={18} />
+                ) : (
+                  <GoIssueOpened size={18} />
+                )}
               </span>
             </div>
           ))}
