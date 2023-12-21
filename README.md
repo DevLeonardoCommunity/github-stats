@@ -2,7 +2,7 @@
 
 <!-- prettier-ignore-start -->
 <!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
-[![All Contributors](https://img.shields.io/badge/all_contributors-11-orange.svg?style=flat-square)](#contributors-)
+[![All Contributors](https://img.shields.io/badge/all_contributors-12-orange.svg?style=flat-square)](#contributors-)
 <!-- ALL-CONTRIBUTORS-BADGE:END -->
 <!-- prettier-ignore-end -->
 
@@ -69,6 +69,7 @@ Thanks for reading and happy coding!
       <td align="center" valign="top" width="14.28%"><a href="https://www.linkedin.com/in/hicham-essaidi-840b11288/"><img src="https://avatars.githubusercontent.com/u/85809218?v=4?s=100" width="100px;" alt="hicham essaidi"/><br /><sub><b>hicham essaidi</b></sub></a><br /><a href="https://github.com/Balastrong/github-stats/commits?author=heshamsadi" title="Code">💻</a></td>
       <td align="center" valign="top" width="14.28%"><a href="https://www.anupamac.me/"><img src="https://avatars.githubusercontent.com/u/35479077?v=4?s=100" width="100px;" alt="Anupam"/><br /><sub><b>Anupam</b></sub></a><br /><a href="https://github.com/Balastrong/github-stats/commits?author=luckyklyist" title="Code">💻</a></td>
       <td align="center" valign="top" width="14.28%"><a href="http://thiti.wcydtt.co"><img src="https://avatars.githubusercontent.com/u/55313215?v=4?s=100" width="100px;" alt="thititongumpun"/><br /><sub><b>thititongumpun</b></sub></a><br /><a href="https://github.com/Balastrong/github-stats/commits?author=thititongumpun" title="Code">💻</a></td>
+      <td align="center" valign="top" width="14.28%"><a href="https://www.linkedin.com/in/jakub-baran-42a00522b/"><img src="https://avatars.githubusercontent.com/u/94863094?v=4?s=100" width="100px;" alt="Jakub Baran"/><br /><sub><b>Jakub Baran</b></sub></a><br /><a href="https://github.com/Balastrong/github-stats/commits?author=baranero" title="Code">💻</a></td>
     </tr>
   </tbody>
 </table>
