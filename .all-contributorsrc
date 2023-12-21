@@ -111,6 +111,15 @@
       "contributions": [
         "code"
       ]
+    },
+    {
+      "login": "baranero",
+      "name": "Jakub Baran",
+      "avatar_url": "https://avatars.githubusercontent.com/u/94863094?v=4",
+      "profile": "https://www.linkedin.com/in/jakub-baran-42a00522b/",
+      "contributions": [
+        "code"
+      ]
     }
   ],
   "contributorsPerLine": 7,
