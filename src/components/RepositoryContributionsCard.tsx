@@ -47,8 +47,8 @@ export const RepositoryContributionsCard = ({
                   state === "MERGED"
                     ? "bg-purple-500"
                     : state === "CLOSED"
-                      ? "bg-red-500"
-                      : "bg-green-500"
+                    ? "bg-red-500"
+                    : "bg-green-500"
                 }`}
               >
                 {state === "MERGED" ? (
