@@ -16,3 +16,7 @@ body,
 html {
   min-height: 100vh;
 }
+
+.hide-scrollbar::-webkit-scrollbar {
+  display: none;
+}
