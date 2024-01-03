@@ -36,10 +36,10 @@ export const RepositoryContributionsCard = ({
           </div>
           <div className="rounded p-1 outline outline-1">{totalCount}</div>
         </h2>
-        <div className="max-h-[200px] overflow-auto flex flex-col gap-1 px-1">
+        <div className="max-h-[22rem] hide-scrollbar overflow-auto flex flex-col px-1 gap-1">
           {nodes?.map(({ pullRequest: { state, title, id, url } }: any) => (
             <div key={id} className="flex items-center justify-between gap-2">
-              <a href={url} target="_blank">
+              <a href={url} target="_blank" className="flex-shrink-0">
                 {title}
               </a>
               <span
@@ -47,8 +47,8 @@ export const RepositoryContributionsCard = ({
                   state === "MERGED"
                     ? "bg-purple-500"
                     : state === "CLOSED"
-                    ? "bg-red-500"
-                    : "bg-green-500"
+                      ? "bg-red-500"
+                      : "bg-green-500"
                 }`}
               >
                 {state === "MERGED" ? (
