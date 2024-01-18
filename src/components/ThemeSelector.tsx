@@ -68,6 +68,7 @@ const LightMode = () => (
     className="h-6 w-6"
     viewBox="0 -960 960 960"
     data-testid="light-mode"
+    fill="currentColor"
   >
     <path
       d="M480-360q50 0 85-35t35-85q0-50-35-85t-85-35q-50 0-85 35t-35 85q0 50 35 85t85 35Zm0 80q-83 0-141.5-58.5T280-480q0-83 
@@ -90,6 +91,7 @@ const DarkMode = () => (
     className="h-6 w-6"
     viewBox="0 -960 960 960"
     data-testid="dark-mode"
+    fill="currentColor"
   >
     <path
       d="M480-120q-150 0-255-105T120-480q0-150 105-255t255-105q14 0 27.5 1t26.5 3q-41 29-65.5 75.5T444-660q0 90 63 
@@ -105,6 +107,7 @@ const SystemPreference = () => (
     viewBox="0 -960 960 960"
     className="h-6 w-6"
     data-testid="system-mode"
+    fill="currentColor"
   >
     <path
       d="M320-120v-80h80v-80H160q-33 0-56.5-23.5T80-360v-400q0-33 23.5-56.5T160-840h640q33 0 56.5 23.5T880-760v400q0 33-23.5 
