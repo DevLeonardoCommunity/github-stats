@@ -120,6 +120,16 @@
       "contributions": [
         "code"
       ]
+    },
+    {
+      "login": "theflucs",
+      "name": "Sabrina",
+      "avatar_url": "https://avatars.githubusercontent.com/u/89919203?v=4",
+      "profile": "https://github.com/theflucs",
+      "contributions": [
+        "code",
+        "bug"
+      ]
     }
   ],
   "contributorsPerLine": 7,
@@ -127,5 +137,5 @@
   "repoType": "github",
   "repoHost": "https://github.com",
   "projectName": "github-stats",
-  "projectOwner": "Balastrong"
+  "projectOwner": "DevLeonardoCommunity"
 }
