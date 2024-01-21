@@ -34,8 +34,10 @@ export const RepositoryContributionsCard = ({
               {repository.owner.login}/{repository.name}
             </Link>
           </div>
-          <div className="rounded outline outline-1 cursor-default px-2">
-            {totalCount}
+          <div className="tooltip tooltip-left" data-tip="Total contributions">
+            <div className="rounded outline outline-1 cursor-default px-2">
+              {totalCount}
+            </div>
           </div>
         </h2>
         <div className="max-h-[22rem] hide-scrollbar overflow-auto flex flex-col px-1 gap-1">
