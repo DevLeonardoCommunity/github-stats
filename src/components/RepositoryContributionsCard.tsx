@@ -34,12 +34,16 @@ export const RepositoryContributionsCard = ({
               {repository.owner.login}/{repository.name}
             </Link>
           </div>
-          <div className="rounded p-1 outline outline-1">{totalCount}</div>
+          <div className="tooltip tooltip-left" data-tip="Total contributions">
+            <div className="rounded outline outline-1 cursor-default px-2">
+              {totalCount}
+            </div>
+          </div>
         </h2>
-        <div className="max-h-[22rem] hide-scrollbar overflow-auto flex flex-col px-1 gap-1">
+        <div className="max-h-[22rem] hide-scrollbar overflow-auto flex flex-col gap-1">
           {nodes?.map(({ pullRequest: { state, title, id, url } }: any) => (
             <div key={id} className="flex items-center justify-between gap-2">
-              <a href={url} target="_blank" className="flex-shrink-0">
+              <a href={url} target="_blank" className="truncate" title={title}>
                 {title}
               </a>
               <span
