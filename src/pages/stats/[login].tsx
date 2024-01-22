@@ -16,6 +16,8 @@ export default function Stats() {
   const baseYear = new Date().getFullYear();
   const [year, setYear] = useState<number>(baseYear);
   const [format, setFormat] = useState<"cards" | "text" | "json">("cards");
+  const [hideOwnRepo, setHideOwnRepo] = useState<boolean>(false);
+
   const {
     repositories,
     isLoading,
@@ -26,19 +28,34 @@ export default function Stats() {
   const [searchQuery, setSearchQuery] = useState<string>("");
 
   const filteredRepositories = useMemo(() => {
-    // putting the default value of the repositories
     if (!searchQuery) {
-      return repositories;
+      return hideOwnRepo
+        ? repositories?.filter(
+            // apply hideOwnRepo filter if checked
+            (repoData) =>
+              repoData.repository.owner.login !== session?.user.login
+          )
+        : repositories;
     }
 
-    // getting search query
+    // filter repositories based on search query
     const query = searchQuery.toLowerCase();
-    const filterRepos = repositories.filter((repoData) =>
+    const filterRepos = repositories?.filter((repoData) =>
       repoData.repository.name.toLowerCase().includes(query)
     );
 
-    return filterRepos;
-  }, [repositories, searchQuery]);
+    const finalFilteredRepos = hideOwnRepo
+      ? filterRepos.filter(
+          // apply hideOwnRepo filter if checked
+          (repoData) => repoData.repository.owner.login !== session?.user.login
+        )
+      : filterRepos;
+    return finalFilteredRepos;
+  }, [repositories, session, searchQuery, hideOwnRepo]);
+
+  const handleHideOwnRepo = () => {
+    setHideOwnRepo((prevHideOwnRepo) => !prevHideOwnRepo);
+  };
 
   const exportJSON = () => {
     const jsonStringData = JSON.stringify(repositories, null, 2);
@@ -72,7 +89,7 @@ export default function Stats() {
   function generateText() {
     let text = "List of repositories and their pull requests:\n\n";
 
-    for (const repoData of repositories) {
+    for (const repoData of filteredRepositories) {
       const repositoryName = repoData.repository.name;
       const ownerLogin = repoData.repository.owner.login;
       const stargazerCount = repoData.repository.stargazerCount;
@@ -159,7 +176,7 @@ export default function Stats() {
               Export as JSON
             </button>
             <div className="p-2 m-1 text-xs overflow-x-auto sm:text-sm md:text-base lg:text-lg">
-              <pre>{JSON.stringify(repositories, null, 2)}</pre>
+              <pre>{JSON.stringify(filteredRepositories, null, 2)}</pre>
             </div>
           </div>
         );
@@ -185,9 +202,8 @@ export default function Stats() {
           </div>
         );
     }
-
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [repositories, format, searchQuery]);
+  }, [repositories, format, searchQuery, hideOwnRepo]);
 
   return (
     <div className="h-full w-full px-4 flex flex-col gap-4">
@@ -224,6 +240,16 @@ export default function Stats() {
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
             />
+          </div>
+          <div className="flex sm:items-start items-center">
+            <input
+              type="checkbox"
+              name="hide-own-repo"
+              checked={hideOwnRepo}
+              onChange={handleHideOwnRepo}
+              className="checkbox checkbox-info"
+            />
+            <label className="ml-2">Hide own repositories</label>
           </div>
         </div>
 
@@ -266,7 +292,7 @@ export default function Stats() {
             </div>
           ))}
         </div>
-      ) : repositories?.length > 0 ? (
+      ) : filteredRepositories?.length > 0 ? (
         formatRender
       ) : (
         <div className="flex flex-col items-center justify-center">
