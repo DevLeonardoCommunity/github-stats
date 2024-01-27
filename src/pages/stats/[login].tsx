@@ -28,30 +28,38 @@ export default function Stats() {
   const [searchQuery, setSearchQuery] = useState<string>("");
 
   const filteredRepositories = useMemo(() => {
-    if (!searchQuery) {
-      return hideOwnRepo
-        ? repositories?.filter(
-            // apply hideOwnRepo filter if checked
-            (repoData) =>
-              repoData.repository.owner.login !== session?.user.login
-          )
-        : repositories;
-    }
+    const filterOutOwnRepos = (
+      repositories: PullRequestContributionsByRepository[]
+    ) => {
+      return repositories.filter(
+        (repoData) => repoData.repository.owner.login !== session?.user.login
+      );
+    };
 
-    // filter repositories based on search query
-    const query = searchQuery.toLowerCase();
-    const filterRepos = repositories?.filter((repoData) =>
-      repoData.repository.name.toLowerCase().includes(query)
-    );
+    const filterReposBySearchQuery = (
+      repositories: PullRequestContributionsByRepository[]
+    ) => {
+      const query = searchQuery.toLowerCase();
+      return repositories?.filter((repoData) =>
+        repoData.repository.name.toLowerCase().includes(query)
+      );
+    };
 
-    const finalFilteredRepos = hideOwnRepo
-      ? filterRepos.filter(
-          // apply hideOwnRepo filter if checked
-          (repoData) => repoData.repository.owner.login !== session?.user.login
-        )
-      : filterRepos;
-    return finalFilteredRepos;
-  }, [repositories, session, searchQuery, hideOwnRepo]);
+    const filterRepos = (
+      repositories: PullRequestContributionsByRepository[]
+    ) => {
+      if (!searchQuery) {
+        return hideOwnRepo ? filterOutOwnRepos(repositories) : repositories;
+      }
+
+      const filteredReposBySearchQuery = filterReposBySearchQuery(repositories);
+      const filteredOutOwnRepos = filterOutOwnRepos(filteredReposBySearchQuery);
+
+      return hideOwnRepo ? filteredOutOwnRepos : filteredReposBySearchQuery;
+    };
+
+    return filterRepos(repositories);
+  }, [repositories, searchQuery, hideOwnRepo, session]);
 
   const handleHideOwnRepo = () => {
     setHideOwnRepo((prevHideOwnRepo) => !prevHideOwnRepo);
