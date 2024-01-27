@@ -31,7 +31,7 @@ export default function Stats() {
     const filterOutOwnRepos = (
       repositories: PullRequestContributionsByRepository[]
     ) => {
-      return repositories.filter(
+      return repositories?.filter(
         (repoData) => repoData.repository.owner.login !== session?.user.login
       );
     };
@@ -53,9 +53,11 @@ export default function Stats() {
       }
 
       const filteredReposBySearchQuery = filterReposBySearchQuery(repositories);
-      const filteredOutOwnRepos = filterOutOwnRepos(filteredReposBySearchQuery);
+      if (!hideOwnRepo) {
+        return filteredReposBySearchQuery;
+      }
 
-      return hideOwnRepo ? filteredOutOwnRepos : filteredReposBySearchQuery;
+      return filterOutOwnRepos(filteredReposBySearchQuery);
     };
 
     return filterRepos(repositories);
