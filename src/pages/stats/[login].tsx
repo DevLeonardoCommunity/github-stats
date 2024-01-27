@@ -241,7 +241,7 @@ export default function Stats() {
               onChange={(e) => setSearchQuery(e.target.value)}
             />
           </div>
-          <div className="flex sm:items-start items-center">
+          <div className="flex sm:items-start items-center justify-center sm:justify-start">
             <input
               type="checkbox"
               name="hide-own-repo"
