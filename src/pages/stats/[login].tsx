@@ -6,6 +6,7 @@ import { useSession } from "next-auth/react";
 import { useRouter } from "next/router";
 import { useMemo, useState } from "react";
 import CardSkeleton from "@/components/CardSkeleton";
+import { toast } from "react-toastify";
 
 const yearsRange = 4;
 
@@ -126,6 +127,26 @@ export default function Stats() {
     return text;
   }
 
+  const copyToClipboard = (format: "text" | "json") => {
+    let data = null;
+
+    if (format === "text") data = generateText();
+    else data = JSON.stringify(repositories, null, 2);
+
+    format = format.charAt(0).toUpperCase() + format.slice(1);
+
+    const blob = new Blob([data], { type: "text/plain" });
+
+    navigator.clipboard
+      .write([new ClipboardItem({ "text/plain": blob })])
+      .then(() => {
+        toast.success(`${format} copied to clipboard`);
+      })
+      .catch(() => {
+        toast.error(`Failed to copy ${format} to clipboard`);
+      });
+  };
+
   const formatRender = useMemo(() => {
     switch (format) {
       case "cards":
@@ -185,6 +206,12 @@ export default function Stats() {
             >
               Export as JSON
             </button>
+            <button
+              className="btn btn-primary p-2 m-1 rounded"
+              onClick={() => copyToClipboard("json")}
+            >
+              Copy
+            </button>
             <div className="p-2 m-1 text-xs overflow-x-auto sm:text-sm md:text-base lg:text-lg">
               <pre>{JSON.stringify(filteredRepositories, null, 2)}</pre>
             </div>
@@ -198,6 +225,12 @@ export default function Stats() {
               onClick={exportText}
             >
               Export as Text
+            </button>
+            <button
+              className="btn btn-primary p-2 m-1 rounded"
+              onClick={() => copyToClipboard("text")}
+            >
+              Copy
             </button>
             <div className="p-2 m-1 text-xs overflow-x-auto sm:text-sm md:text-base lg:text-lg">
               <pre>{generateText()}</pre>
