@@ -13,58 +13,86 @@ export const RepositoryContributionsCard = ({
   contributions: Contributions;
 }) => {
   return (
-    <div className="card bg-base-100">
-      <div className="card-body">
-        <h2 className="card-title flex justify-between">
-          <div className="flex justify-center items-center gap-2">
-            <Image
-              src={repository.owner.avatarUrl}
-              alt={repository.owner.login}
-              width={40}
-              height={40}
-              className="rounded-full"
-            />
-            <Link
-              href={`https://github.com/${repository.owner.login}/${repository.name}`}
-              rel="noopener noreferrer"
-              target="_blank"
-              className="hover:underline"
-              aria-label={`${repository.name}`}
-            >
-              {repository.owner.login}/{repository.name}
-            </Link>
-          </div>
-          <div className="tooltip tooltip-left" data-tip="Total contributions">
-            <div className="rounded outline outline-1 cursor-default px-2">
-              {totalCount}
-            </div>
-          </div>
-        </h2>
-        <div className="max-h-[22rem] hide-scrollbar overflow-auto flex flex-col gap-1">
-          {nodes?.map(({ pullRequest: { state, title, id, url } }: any) => (
-            <div key={id} className="flex items-center justify-between gap-2">
-              <a href={url} target="_blank" className="truncate" title={title}>
-                {title}
-              </a>
-              <span
-                className={`h-fit rounded p-1 ${
-                  state === "MERGED"
-                    ? "bg-purple-500"
-                    : state === "CLOSED"
-                    ? "bg-red-500"
-                    : "bg-green-500"
-                }`}
+    <div className="card bg-base-100 overflow-visible">
+      <div className="sm:w-auto card bg-base-100 repository-card">
+        <div className="card-body">
+          <div className="card-title flex items-center justify-between">
+            <div className="flex items-center space-x-2 flex-grow">
+              <Image
+                src={repository.owner.avatarUrl}
+                alt={repository.owner.login}
+                width={40}
+                height={40}
+                className="rounded-full"
+              />
+              <div
+                className="grid grid-flow-col gap-2 flex-grow tooltip text-left"
+                data-tip={`${repository.owner.login}/${repository.name}`}
               >
-                {state === "MERGED" ? (
-                  <FaCodeMerge size={18} />
-                ) : state === "CLOSED" ? (
-                  <IoIosCloseCircleOutline size={18} />
-                ) : (
-                  <GoIssueOpened size={18} />
-                )}
-              </span>
+                <Link
+                  href={`https://github.com/${repository.owner.login}/${repository.name}`}
+                  rel="noopener noreferrer"
+                  target="_blank"
+                  className="hover:underline truncate flex-grow"
+                  aria-label={`${repository.name}`}
+                >
+                  <h3 className="logged-user truncate">
+                    {repository.owner.login}/{repository.name}
+                  </h3>
+                </Link>
+              </div>
+              <div
+                className="tooltip tooltip-left"
+                data-tip="Total contributions"
+              >
+                <div className="rounded outline outline-1 cursor-default px-2">
+                  {totalCount}
+                </div>
+              </div>
             </div>
-          ))}
+          </div>
+          <div className="max-h-[22rem] hide-scrollbar overflow-auto flex flex-col gap-1">
+            {nodes?.map(
+              (
+                { pullRequest: { state, title, id, url } }: any,
+                index: number
+              ) => (
+                <div
+                  key={id}
+                  className={`flex items-center justify-between gap-2 tooltip text-left ${
+                    index === 0 ? "tooltip-bottom" : "tooltip-top"
+                  }`}
+                  data-tip={title}
+                >
+                  <a
+                    href={url}
+                    target="_blank"
+                    className="truncate"
+                    title={title}
+                  >
+                    {title}
+                  </a>
+                  <span
+                    className={`h-fit rounded p-1 ${
+                      state === "MERGED"
+                        ? "bg-purple-500"
+                        : state === "CLOSED"
+                        ? "bg-red-500"
+                        : "bg-green-500"
+                    }`}
+                  >
+                    {state === "MERGED" ? (
+                      <FaCodeMerge size={18} />
+                    ) : state === "CLOSED" ? (
+                      <IoIosCloseCircleOutline size={18} />
+                    ) : (
+                      <GoIssueOpened size={18} />
+                    )}
+                  </span>
+                </div>
+              )
+            )}
+          </div>
         </div>
       </div>
     </div>

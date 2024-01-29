@@ -161,7 +161,7 @@ export default function Stats() {
                 </li>
               </ul>
             </div>
-            <div className="w-full grid xl:grid-cols-3 gap-3 mb-3 md:grid-cols-2">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 pb-4">
               {filteredRepositories?.length > 0
                 ? filteredRepositories?.map(
                     ({ repository, contributions }, i) => (
@@ -251,7 +251,7 @@ export default function Stats() {
               onChange={(e) => setSearchQuery(e.target.value)}
             />
           </div>
-          <div className="flex sm:items-start items-center justify-center sm:justify-start">
+          <div className="flex sm:items-start items-center justify-center md:justify-start">
             <input
               type="checkbox"
               name="hide-own-repo"
