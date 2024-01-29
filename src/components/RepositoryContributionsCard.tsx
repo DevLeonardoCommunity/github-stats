@@ -64,12 +64,7 @@ export const RepositoryContributionsCard = ({
                   }`}
                   data-tip={title}
                 >
-                  <a
-                    href={url}
-                    target="_blank"
-                    className="truncate"
-                    title={title}
-                  >
+                  <a href={url} target="_blank" className="truncate">
                     {title}
                   </a>
                   <span
