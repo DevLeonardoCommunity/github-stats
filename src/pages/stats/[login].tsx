@@ -133,12 +133,8 @@ export default function Stats() {
     if (format === "text") data = generateText();
     else data = JSON.stringify(repositories, null, 2);
 
-    format = format.charAt(0).toUpperCase() + format.slice(1);
-
-    const blob = new Blob([data], { type: "text/plain" });
-
     navigator.clipboard
-      .write([new ClipboardItem({ "text/plain": blob })])
+      .writeText(data)
       .then(() => {
         toast.success(`${format} copied to clipboard`);
       })
