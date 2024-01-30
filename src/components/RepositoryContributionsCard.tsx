@@ -52,41 +52,35 @@ export const RepositoryContributionsCard = ({
             </div>
           </div>
           <div className="max-h-[22rem] hide-scrollbar overflow-auto flex flex-col gap-1">
-            {nodes?.map(
-              (
-                { pullRequest: { state, title, id, url } }: any,
-                index: number
-              ) => (
-                <div
-                  key={id}
-                  className={`flex items-center justify-between gap-2 tooltip text-left ${
-                    index === 0 ? "tooltip-bottom" : "tooltip-top"
-                  }`}
-                  data-tip={title}
+            {nodes?.map(({ pullRequest: { state, title, id, url } }: any) => (
+              <div key={id} className="flex items-center justify-between gap-2">
+                <a
+                  href={url}
+                  target="_blank"
+                  className="truncate"
+                  title={title}
                 >
-                  <a href={url} target="_blank" className="truncate">
-                    {title}
-                  </a>
-                  <span
-                    className={`h-fit rounded p-1 ${
-                      state === "MERGED"
-                        ? "bg-purple-500"
-                        : state === "CLOSED"
-                        ? "bg-red-500"
-                        : "bg-green-500"
-                    }`}
-                  >
-                    {state === "MERGED" ? (
-                      <FaCodeMerge size={18} />
-                    ) : state === "CLOSED" ? (
-                      <IoIosCloseCircleOutline size={18} />
-                    ) : (
-                      <GoIssueOpened size={18} />
-                    )}
-                  </span>
-                </div>
-              )
-            )}
+                  {title}
+                </a>
+                <span
+                  className={`h-fit rounded p-1 ${
+                    state === "MERGED"
+                      ? "bg-purple-500"
+                      : state === "CLOSED"
+                      ? "bg-red-500"
+                      : "bg-green-500"
+                  }`}
+                >
+                  {state === "MERGED" ? (
+                    <FaCodeMerge size={18} />
+                  ) : state === "CLOSED" ? (
+                    <IoIosCloseCircleOutline size={18} />
+                  ) : (
+                    <GoIssueOpened size={18} />
+                  )}
+                </span>
+              </div>
+            ))}
           </div>
         </div>
       </div>
