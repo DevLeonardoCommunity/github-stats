@@ -6,9 +6,10 @@ import {
 import { useGitHubQuery } from "@/hooks";
 import Image from "next/image";
 import Link from "next/link";
-import { exportAsImage } from "@/utils";
 import GitHubCalendar from "react-github-calendar";
 import { Tooltip as ReactTooltip } from "react-tooltip";
+import { exportAsImage } from "@/utils/exportRepositories";
+import { ExportOptions } from "@/utils/exportOptions";
 
 interface Activity {
   date: string;
@@ -53,7 +54,11 @@ export default function Profile() {
               <button
                 className="btn-ghost"
                 onClick={() =>
-                  exportAsImage("#profile-card", "download", "profile-card")
+                  exportAsImage(
+                    "#profile-card",
+                    ExportOptions.Download,
+                    "profile-card"
+                  )
                 }
               >
                 Download as PNG
@@ -62,7 +67,9 @@ export default function Profile() {
             <li>
               <button
                 className="btn-ghost"
-                onClick={() => exportAsImage("#profile-card", "clipboard")}
+                onClick={() =>
+                  exportAsImage("#profile-card", ExportOptions.Clipboard)
+                }
               >
                 Copy to Clipboard
               </button>
