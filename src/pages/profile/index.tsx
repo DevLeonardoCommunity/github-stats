@@ -41,7 +41,7 @@ export default function Profile() {
         <div className="dropdown ">
           <button
             tabIndex={0}
-            className="btn btn-primary p-2 m-1 rounded cursor-pointer"
+            className="btn btn-sm btn-primary p-2 m-1 rounded cursor-pointer"
           >
             Export as image
           </button>
@@ -71,7 +71,9 @@ export default function Profile() {
         </div>
         <div className="flex mx-auto">
           <label className="cursor-pointer label gap-2">
-            <span className="label badge badge-primary">Activity Calendar</span>
+            <div className="label badge badge-primary p-3 whitespace-nowrap">
+              Show Activity Calendar
+            </div>
             <input
               type="checkbox"
               className="toggle toggle-primary"
@@ -88,7 +90,7 @@ export default function Profile() {
             <figure className="px-10 pt-10">
               <Image
                 src={data.user.avatarUrl}
-                alt={data?.user.login}
+                alt={`${data?.user.login} avatar`}
                 width={120}
                 height={120}
                 className="rounded-full z-10"
@@ -107,7 +109,7 @@ export default function Profile() {
               <p>{data.user.bio}</p>
               <div className="card-actions mt-1">
                 <Link
-                  className="btn btn-primary"
+                  className="btn btn-sm btn-primary rounded"
                   href={`https://github.com/${data.user.login}`}
                   target="_blank"
                 >

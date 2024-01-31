@@ -49,11 +49,11 @@ export const Header = () => {
           </div>
           <div className="navbar-center hidden lg:flex">
             <ul className="menu menu-horizontal px-1">
-              <li>
+              <li className="text-base font-medium">
                 <Link href="/">Home</Link>
               </li>
               {status === "authenticated" && (
-                <li>
+                <li className="text-base font-medium">
                   <Link href={`/stats/${session.user.login}`}>Stats</Link>
                 </li>
               )}
@@ -80,7 +80,9 @@ export const Header = () => {
                   <li>
                     <a>
                       Settings
-                      <span className="badge">Soon</span>
+                      <span className="badge badge-secondary badge-outline">
+                        Soon
+                      </span>
                     </a>
                   </li>
                   <li>
