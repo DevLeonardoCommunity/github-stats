@@ -19,7 +19,7 @@ module.exports = {
       "light",
       {
         "custom-dark": {
-          primary: "#3b82f6",
+          primary: "#2d63bc",
 
           secondary: "#a78bfa",
 
