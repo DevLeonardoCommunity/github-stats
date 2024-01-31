@@ -2,27 +2,27 @@ import { FC } from "react";
 import { RepositoryRenderFormat } from "@/types/github";
 
 interface ReposFiltersProps {
+  searchQuery: string;
+  setSearchQuery: React.Dispatch<React.SetStateAction<string>>;
   baseYear: number;
   year: number;
   setYear: React.Dispatch<React.SetStateAction<number>>;
-  setSearchQuery: React.Dispatch<React.SetStateAction<string>>;
-  searchQuery: string;
-  hideOwnRepo: boolean;
-  handleHideOwnRepo: () => void;
   format: RepositoryRenderFormat;
   setFormat: React.Dispatch<React.SetStateAction<RepositoryRenderFormat>>;
+  hideOwnRepo: boolean;
+  setHideOwnRepo: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
 const ReposFilters: FC<ReposFiltersProps> = ({
+  searchQuery,
+  setSearchQuery,
   baseYear,
   year,
   setYear,
-  setSearchQuery,
-  searchQuery,
-  hideOwnRepo,
-  handleHideOwnRepo,
   format,
   setFormat,
+  hideOwnRepo,
+  setHideOwnRepo,
 }) => {
   const YEARS_RANGE = 4;
   const FORMAT_OPTIONS = ["cards", "text", "json"] as const;
@@ -33,6 +33,10 @@ const ReposFilters: FC<ReposFiltersProps> = ({
 
   const handleFormatChange = (selectedFormat: RepositoryRenderFormat) => {
     setFormat(selectedFormat);
+  };
+
+  const handleHideOwnRepoChange = () => {
+    setHideOwnRepo((prevHideOwnRepo) => !prevHideOwnRepo);
   };
 
   return (
@@ -88,7 +92,7 @@ const ReposFilters: FC<ReposFiltersProps> = ({
             type="checkbox"
             name="hide-own-repo"
             checked={hideOwnRepo}
-            onChange={handleHideOwnRepo}
+            onChange={handleHideOwnRepoChange}
             className="checkbox checkbox-sm checkbox-primary"
           />
           <span className="label-text font-medium inline-block align-top text-sm ml-1">

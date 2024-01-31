@@ -30,10 +30,6 @@ export default function Stats() {
     hideOwnRepo
   );
 
-  const handleHideOwnRepo = () => {
-    setHideOwnRepo((prevHideOwnRepo) => !prevHideOwnRepo);
-  };
-
   return (
     <div className="h-full w-full px-4 flex flex-col gap-4">
       <div className="mt-4">
@@ -44,13 +40,13 @@ export default function Stats() {
         </h2>
       </div>
       <ReposFilters
+        searchQuery={searchQuery}
+        setSearchQuery={setSearchQuery}
         baseYear={baseYear}
         year={year}
         setYear={setYear}
-        setSearchQuery={setSearchQuery}
-        searchQuery={searchQuery}
         hideOwnRepo={hideOwnRepo}
-        handleHideOwnRepo={handleHideOwnRepo}
+        setHideOwnRepo={setHideOwnRepo}
         format={format}
         setFormat={setFormat}
       />
