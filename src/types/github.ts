@@ -16,6 +16,7 @@ export type PullRequest = {
   id: string;
   title: string;
   state: "MERGED" | "CLOSED" | "OPEN";
+  url: string;
 };
 
 export type Repository = {
