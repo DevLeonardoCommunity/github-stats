@@ -2,7 +2,7 @@
 
 <!-- prettier-ignore-start -->
 <!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
-[![All Contributors](https://img.shields.io/badge/all_contributors-14-orange.svg?style=flat-square)](#contributors-)
+[![All Contributors](https://img.shields.io/badge/all_contributors-15-orange.svg?style=flat-square)](#contributors-)
 <!-- ALL-CONTRIBUTORS-BADGE:END -->
 <!-- prettier-ignore-end -->
 
@@ -72,6 +72,9 @@ Thanks for reading and happy coding!
       <td align="center" valign="top" width="14.28%"><a href="https://www.linkedin.com/in/jakub-baran-42a00522b/"><img src="https://avatars.githubusercontent.com/u/94863094?v=4?s=100" width="100px;" alt="Jakub Baran"/><br /><sub><b>Jakub Baran</b></sub></a><br /><a href="https://github.com/DevLeonardoCommunity/github-stats/commits?author=baranero" title="Code">💻</a></td>
       <td align="center" valign="top" width="14.28%"><a href="https://github.com/theflucs"><img src="https://avatars.githubusercontent.com/u/89919203?v=4?s=100" width="100px;" alt="Sabrina"/><br /><sub><b>Sabrina</b></sub></a><br /><a href="https://github.com/DevLeonardoCommunity/github-stats/commits?author=theflucs" title="Code">💻</a> <a href="https://github.com/DevLeonardoCommunity/github-stats/issues?q=author%3Atheflucs" title="Bug reports">🐛</a></td>
       <td align="center" valign="top" width="14.28%"><a href="https://github.com/K1ethoang"><img src="https://avatars.githubusercontent.com/u/88199151?v=4?s=100" width="100px;" alt="Kiet Hoang Gia"/><br /><sub><b>Kiet Hoang Gia</b></sub></a><br /><a href="https://github.com/DevLeonardoCommunity/github-stats/commits?author=K1ethoang" title="Code">💻</a></td>
+    </tr>
+    <tr>
+      <td align="center" valign="top" width="14.28%"><a href="https://www.biodrop.io/CBID2"><img src="https://avatars.githubusercontent.com/u/105683440?v=4?s=100" width="100px;" alt="Christine Belzie"/><br /><sub><b>Christine Belzie</b></sub></a><br /><a href="https://github.com/DevLeonardoCommunity/github-stats/pulls?q=is%3Apr+reviewed-by%3ACBID2" title="Reviewed Pull Requests">👀</a></td>
     </tr>
   </tbody>
 </table>
