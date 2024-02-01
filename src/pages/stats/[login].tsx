@@ -6,8 +6,6 @@ import CardSkeleton from "@/components/CardSkeleton";
 import ReposFilters from "@/components/ReposFilters";
 import FormatStatsRender from "@/components/FormatStatsRender";
 import { RepositoryRenderFormat } from "@/types/github";
-import { exportAsJSON, exportAsText } from "@/utils/exportRepositories";
-import { generateText } from "@/utils/generateText";
 
 export default function Stats() {
   const { data: session } = useSession();
@@ -62,8 +60,6 @@ export default function Stats() {
         <FormatStatsRender
           repositories={filteredRepositories}
           format={format}
-          exportJSON={() => exportAsJSON(filteredRepositories)}
-          exportText={() => exportAsText(generateText(filteredRepositories))}
         />
       )}
     </div>

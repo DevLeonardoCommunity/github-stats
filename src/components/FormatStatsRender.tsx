@@ -23,8 +23,6 @@ const NoContributions: FC<NoContributionsProps> = ({ message }) => (
 interface FormatStatsRenderProps {
   repositories: PullRequestContributionsByRepository[];
   format: RepositoryRenderFormat;
-  exportJSON: () => void;
-  exportText: () => void;
 }
 
 const FormatStatsRender: FC<FormatStatsRenderProps> = ({
