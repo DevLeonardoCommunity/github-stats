@@ -1,7 +1,7 @@
 import { FC } from "react";
 import { RepositoryRenderFormat } from "@/types/github";
 
-interface ReposFiltersProps {
+type ReposFiltersProps = {
   searchQuery: string;
   setSearchQuery: React.Dispatch<React.SetStateAction<string>>;
   baseYear: number;
@@ -11,7 +11,7 @@ interface ReposFiltersProps {
   setFormat: React.Dispatch<React.SetStateAction<RepositoryRenderFormat>>;
   hideOwnRepo: boolean;
   setHideOwnRepo: React.Dispatch<React.SetStateAction<boolean>>;
-}
+};
 
 const ReposFilters: FC<ReposFiltersProps> = ({
   searchQuery,

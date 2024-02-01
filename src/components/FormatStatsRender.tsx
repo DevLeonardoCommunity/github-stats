@@ -9,9 +9,9 @@ import ExportDropdown from "./ExportDropdown";
 import { generateText } from "@/utils/generateText";
 import { exportAsJSON, exportAsText } from "@/utils/exportRepositories";
 
-interface NoContributionsProps {
+type NoContributionsProps = {
   message: string;
-}
+};
 
 const NoContributions: FC<NoContributionsProps> = ({ message }) => (
   <div className="flex flex-col items-center justify-center">
@@ -20,10 +20,10 @@ const NoContributions: FC<NoContributionsProps> = ({ message }) => (
   </div>
 );
 
-interface FormatStatsRenderProps {
+type FormatStatsRenderProps = {
   repositories: PullRequestContributionsByRepository[];
   format: RepositoryRenderFormat;
-}
+};
 
 const FormatStatsRender: FC<FormatStatsRenderProps> = ({
   repositories,
