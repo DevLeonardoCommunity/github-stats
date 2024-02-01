@@ -7,7 +7,7 @@ const ExportDropdown: FC = () => {
     <div className="dropdown">
       <button
         tabIndex={0}
-        className="block w-fit btn btn-sm btn-primary m-1 p-2 rounded"
+        className="block w-fit btn btn-primary m-1 p-2 rounded"
       >
         Export as image
       </button>

@@ -8,7 +8,6 @@ import {
 import ExportDropdown from "./ExportDropdown";
 import { generateText } from "@/utils/generateText";
 import { exportAsJSON, exportAsText } from "@/utils/exportRepositories";
-import { FaRegFolderOpen } from "react-icons/fa";
 
 interface NoContributionsProps {
   message: string;
@@ -16,7 +15,7 @@ interface NoContributionsProps {
 
 const NoContributions: FC<NoContributionsProps> = ({ message }) => (
   <div className="flex flex-col items-center justify-center">
-    <FaRegFolderOpen size={28} />
+    <p className="text-4xl p-2">📃</p>
     <p className="text-xl">{message}</p>
   </div>
 );
@@ -57,7 +56,7 @@ const FormatStatsRender: FC<FormatStatsRenderProps> = ({
         return (
           <div>
             <button
-              className="btn btn-sm btn-primary p-2 m-1 rounded"
+              className="btn btn-primary p-2 m-1 rounded"
               onClick={() => exportAsJSON(repositories)}
             >
               Export as JSON
@@ -72,7 +71,7 @@ const FormatStatsRender: FC<FormatStatsRenderProps> = ({
         return (
           <div>
             <button
-              className="btn btn-sm btn-primary p-2 m-1 rounded"
+              className="btn btn-primary p-2 m-1 rounded"
               onClick={() => exportAsText(generateText(repositories))}
             >
               Export as Text
