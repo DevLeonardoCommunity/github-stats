@@ -31,6 +31,7 @@ export function ThemeSelector() {
     <>
       <div className="dropdown dropdown-bottom dropdown-end">
         <label
+          for="themeToggle"
           tabIndex={0}
           className="btn btn-circle btn-ghost m-1"
           data-testid="themeSelectorButton"
