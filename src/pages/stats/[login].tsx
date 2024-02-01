@@ -6,6 +6,7 @@ import { useSession } from "next-auth/react";
 import { useRouter } from "next/router";
 import { useMemo, useState } from "react";
 import CardSkeleton from "@/components/CardSkeleton";
+import { toast } from "react-toastify";
 
 const yearsRange = 4;
 
@@ -16,6 +17,8 @@ export default function Stats() {
   const baseYear = new Date().getFullYear();
   const [year, setYear] = useState<number>(baseYear);
   const [format, setFormat] = useState<"cards" | "text" | "json">("cards");
+  const [hideOwnRepo, setHideOwnRepo] = useState<boolean>(false);
+
   const {
     repositories,
     isLoading,
@@ -26,19 +29,44 @@ export default function Stats() {
   const [searchQuery, setSearchQuery] = useState<string>("");
 
   const filteredRepositories = useMemo(() => {
-    // putting the default value of the repositories
-    if (!searchQuery) {
-      return repositories;
-    }
+    const filterOutOwnRepos = (
+      repositories: PullRequestContributionsByRepository[]
+    ) => {
+      return repositories?.filter(
+        (repoData) => repoData.repository.owner.login !== session?.user.login
+      );
+    };
 
-    // getting search query
-    const query = searchQuery.toLowerCase();
-    const filterRepos = repositories.filter((repoData) =>
-      repoData.repository.name.toLowerCase().includes(query)
-    );
+    const filterReposBySearchQuery = (
+      repositories: PullRequestContributionsByRepository[]
+    ) => {
+      const query = searchQuery.toLowerCase();
+      return repositories?.filter((repoData) =>
+        repoData.repository.name.toLowerCase().includes(query)
+      );
+    };
 
-    return filterRepos;
-  }, [repositories, searchQuery]);
+    const filterRepos = (
+      repositories: PullRequestContributionsByRepository[]
+    ) => {
+      if (!searchQuery) {
+        return hideOwnRepo ? filterOutOwnRepos(repositories) : repositories;
+      }
+
+      const filteredReposBySearchQuery = filterReposBySearchQuery(repositories);
+      if (!hideOwnRepo) {
+        return filteredReposBySearchQuery;
+      }
+
+      return filterOutOwnRepos(filteredReposBySearchQuery);
+    };
+
+    return filterRepos(repositories);
+  }, [repositories, searchQuery, hideOwnRepo, session]);
+
+  const handleHideOwnRepo = () => {
+    setHideOwnRepo((prevHideOwnRepo) => !prevHideOwnRepo);
+  };
 
   const exportJSON = () => {
     const jsonStringData = JSON.stringify(repositories, null, 2);
@@ -72,7 +100,7 @@ export default function Stats() {
   function generateText() {
     let text = "List of repositories and their pull requests:\n\n";
 
-    for (const repoData of repositories) {
+    for (const repoData of filteredRepositories) {
       const repositoryName = repoData.repository.name;
       const ownerLogin = repoData.repository.owner.login;
       const stargazerCount = repoData.repository.stargazerCount;
@@ -98,6 +126,22 @@ export default function Stats() {
     }
     return text;
   }
+
+  const copyToClipboard = (format: "text" | "json") => {
+    let data = null;
+
+    if (format === "text") data = generateText();
+    else data = JSON.stringify(repositories, null, 2);
+
+    navigator.clipboard
+      .writeText(data)
+      .then(() => {
+        toast.success(`${format} copied to clipboard`);
+      })
+      .catch(() => {
+        toast.error(`Failed to copy ${format} to clipboard`);
+      });
+  };
 
   const formatRender = useMemo(() => {
     switch (format) {
@@ -134,7 +178,7 @@ export default function Stats() {
                 </li>
               </ul>
             </div>
-            <div className="w-full grid xl:grid-cols-3 gap-3 mb-3 md:grid-cols-2">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 pb-4">
               {filteredRepositories?.length > 0
                 ? filteredRepositories?.map(
                     ({ repository, contributions }, i) => (
@@ -158,8 +202,14 @@ export default function Stats() {
             >
               Export as JSON
             </button>
+            <button
+              className="btn btn-primary p-2 m-1 rounded"
+              onClick={() => copyToClipboard("json")}
+            >
+              Copy
+            </button>
             <div className="p-2 m-1 text-xs overflow-x-auto sm:text-sm md:text-base lg:text-lg">
-              <pre>{JSON.stringify(repositories, null, 2)}</pre>
+              <pre>{JSON.stringify(filteredRepositories, null, 2)}</pre>
             </div>
           </div>
         );
@@ -171,6 +221,12 @@ export default function Stats() {
               onClick={exportText}
             >
               Export as Text
+            </button>
+            <button
+              className="btn btn-primary p-2 m-1 rounded"
+              onClick={() => copyToClipboard("text")}
+            >
+              Copy
             </button>
             <div className="p-2 m-1 text-xs overflow-x-auto sm:text-sm md:text-base lg:text-lg">
               <pre>{generateText()}</pre>
@@ -185,9 +241,8 @@ export default function Stats() {
           </div>
         );
     }
-
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [repositories, format, searchQuery]);
+  }, [repositories, format, searchQuery, hideOwnRepo]);
 
   return (
     <div className="h-full w-full px-4 flex flex-col gap-4">
@@ -224,6 +279,16 @@ export default function Stats() {
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
             />
+          </div>
+          <div className="flex sm:items-start items-center justify-center md:justify-start">
+            <input
+              type="checkbox"
+              name="hide-own-repo"
+              checked={hideOwnRepo}
+              onChange={handleHideOwnRepo}
+              className="checkbox checkbox-info"
+            />
+            <label className="ml-2">Hide own repositories</label>
           </div>
         </div>
 
@@ -266,7 +331,7 @@ export default function Stats() {
             </div>
           ))}
         </div>
-      ) : repositories?.length > 0 ? (
+      ) : filteredRepositories?.length > 0 ? (
         formatRender
       ) : (
         <div className="flex flex-col items-center justify-center">

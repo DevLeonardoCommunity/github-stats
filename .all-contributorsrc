@@ -120,6 +120,34 @@
       "contributions": [
         "code"
       ]
+    },
+    {
+      "login": "theflucs",
+      "name": "Sabrina",
+      "avatar_url": "https://avatars.githubusercontent.com/u/89919203?v=4",
+      "profile": "https://github.com/theflucs",
+      "contributions": [
+        "code",
+        "bug"
+      ]
+    },
+    {
+      "login": "K1ethoang",
+      "name": "Kiet Hoang Gia",
+      "avatar_url": "https://avatars.githubusercontent.com/u/88199151?v=4",
+      "profile": "https://github.com/K1ethoang",
+      "contributions": [
+        "code"
+      ]
+    },
+    {
+      "login": "CBID2",
+      "name": "Christine Belzie",
+      "avatar_url": "https://avatars.githubusercontent.com/u/105683440?v=4",
+      "profile": "https://www.biodrop.io/CBID2",
+      "contributions": [
+        "review"
+      ]
     }
   ],
   "contributorsPerLine": 7,
@@ -127,5 +155,5 @@
   "repoType": "github",
   "repoHost": "https://github.com",
   "projectName": "github-stats",
-  "projectOwner": "Balastrong"
+  "projectOwner": "DevLeonardoCommunity"
 }
