@@ -1,7 +1,7 @@
 import { toPng } from "html-to-image";
 import { toast } from "react-toastify";
 import { PullRequestContributionsByRepository } from "@/types/github";
-import { ExportOptions } from "./exportOptions";
+import { ExportOptions } from "@/types/export";
 import { downloadBlob } from "./downloadBlob";
 
 export const exportAsJSON = (data: PullRequestContributionsByRepository[]) => {
@@ -41,10 +41,10 @@ export const exportAsImage = async (
       canvas.toBlob((blob) => {
         if (blob) {
           switch (option) {
-            case ExportOptions.Download:
+            case "download":
               downloadBlob(blob, filename ? `${filename}.png` : "image.png");
               break;
-            case ExportOptions.Clipboard:
+            case "clipboard":
               navigator.clipboard
                 .write([new ClipboardItem({ "image/png": blob })])
                 .then(() => toast.success("Image copied to clipboard"))

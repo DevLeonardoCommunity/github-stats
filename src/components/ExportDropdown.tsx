@@ -1,6 +1,5 @@
 import { FC } from "react";
 import { exportAsImage } from "@/utils/exportRepositories";
-import { ExportOptions } from "@/utils/exportOptions";
 
 const ExportDropdown: FC = () => {
   return (
@@ -18,9 +17,7 @@ const ExportDropdown: FC = () => {
         <li>
           <button
             className="btn-ghost"
-            onClick={() =>
-              exportAsImage(".grid", ExportOptions.Download, "stats")
-            }
+            onClick={() => exportAsImage(".grid", "download", "stats")}
           >
             Download as PNG
           </button>
@@ -28,7 +25,7 @@ const ExportDropdown: FC = () => {
         <li>
           <button
             className="btn-ghost"
-            onClick={() => exportAsImage(".grid", ExportOptions.Clipboard)}
+            onClick={() => exportAsImage(".grid", "clipboard")}
           >
             Copy to Clipboard
           </button>
