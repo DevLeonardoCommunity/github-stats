@@ -2,7 +2,7 @@ import { toPng } from "html-to-image";
 import { toast } from "react-toastify";
 import { PullRequestContributionsByRepository } from "@/types/github";
 import { ExportOptions } from "@/types/export";
-import { downloadBlob } from "./downloadBlob";
+import { downloadBlob } from "@/utils";
 
 export const exportAsJSON = (data: PullRequestContributionsByRepository[]) => {
   const jsonStringData = JSON.stringify(data, null, 2);

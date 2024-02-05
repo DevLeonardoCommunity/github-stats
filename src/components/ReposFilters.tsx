@@ -13,7 +13,7 @@ type ReposFiltersProps = {
   setHideOwnRepo: React.Dispatch<React.SetStateAction<boolean>>;
 };
 
-const ReposFilters: FC<ReposFiltersProps> = ({
+export const ReposFilters: FC<ReposFiltersProps> = ({
   searchQuery,
   setSearchQuery,
   baseYear,
@@ -101,5 +101,3 @@ const ReposFilters: FC<ReposFiltersProps> = ({
     </div>
   );
 };
-
-export default ReposFilters;

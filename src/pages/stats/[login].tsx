@@ -2,9 +2,7 @@ import { useState } from "react";
 import { useSession } from "next-auth/react";
 import { useRouter } from "next/router";
 import { useGitHubPullRequests, useFilteredRepositories } from "@/hooks";
-import CardSkeleton from "@/components/CardSkeleton";
-import ReposFilters from "@/components/ReposFilters";
-import FormatStatsRender from "@/components/FormatStatsRender";
+import { CardSkeleton, FormatStatsRender, ReposFilters } from "@/components";
 import { RepositoryRenderFormat } from "@/types/github";
 
 export default function Stats() {

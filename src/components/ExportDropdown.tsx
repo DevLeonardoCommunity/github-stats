@@ -1,5 +1,5 @@
 import { FC } from "react";
-import { exportAsImage } from "@/utils/exportRepositories";
+import { exportAsImage } from "@/utils";
 
 const ExportDropdown: FC = () => {
   return (

@@ -6,8 +6,7 @@ import {
   RepositoryRenderFormat,
 } from "@/types/github";
 import ExportDropdown from "./ExportDropdown";
-import { generateText } from "@/utils/generateText";
-import { exportAsJSON, exportAsText } from "@/utils/exportRepositories";
+import { exportAsJSON, exportAsText, generateText } from "@/utils";
 
 type NoContributionsProps = {
   message: string;
@@ -25,7 +24,7 @@ type FormatStatsRenderProps = {
   format: RepositoryRenderFormat;
 };
 
-const FormatStatsRender: FC<FormatStatsRenderProps> = ({
+export const FormatStatsRender: FC<FormatStatsRenderProps> = ({
   repositories,
   format,
 }) => {
@@ -86,5 +85,3 @@ const FormatStatsRender: FC<FormatStatsRenderProps> = ({
 
   return renderContent;
 };
-
-export default FormatStatsRender;
