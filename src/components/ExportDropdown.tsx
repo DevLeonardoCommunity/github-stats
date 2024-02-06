@@ -1,7 +1,7 @@
 import { FC } from "react";
 import { exportAsImage } from "@/utils";
 
-const ExportDropdown: FC = () => {
+export const ExportDropdown: FC = () => {
   return (
     <div className="dropdown">
       <button
@@ -34,5 +34,3 @@ const ExportDropdown: FC = () => {
     </div>
   );
 };
-
-export default ExportDropdown;

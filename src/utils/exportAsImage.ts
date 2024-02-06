@@ -1,20 +1,7 @@
 import { toPng } from "html-to-image";
 import { toast } from "react-toastify";
-import { PullRequestContributionsByRepository } from "@/types/github";
 import { ExportOptions } from "@/types/export";
-import { downloadBlob } from "@/utils";
-
-export const exportAsJSON = (data: PullRequestContributionsByRepository[]) => {
-  const jsonStringData = JSON.stringify(data, null, 2);
-  downloadBlob(
-    new Blob([jsonStringData], { type: "application/json" }),
-    "data.json"
-  );
-};
-
-export const exportAsText = (text: string) => {
-  downloadBlob(new Blob([text], { type: "text/plain" }), "data.txt");
-};
+import { downloadBlob } from ".";
 
 export const exportAsImage = async (
   selector: string,
