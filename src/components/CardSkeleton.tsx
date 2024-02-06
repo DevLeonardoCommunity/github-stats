@@ -2,7 +2,7 @@ import React from "react";
 import Skeleton from "react-loading-skeleton";
 import "react-loading-skeleton/dist/skeleton.css";
 
-const CardSkeleton = () => {
+export const CardSkeleton = () => {
   return (
     <div className="card-body h-full">
       <h2 className="card-title flex justify-between">
@@ -25,5 +25,3 @@ const CardSkeleton = () => {
     </div>
   );
 };
-
-export default CardSkeleton;

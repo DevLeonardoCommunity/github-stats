@@ -14,7 +14,7 @@ export const Header = () => {
           <div className="navbar-start">
             <div className="dropdown">
               <label
-                for="menu"
+                htmlFor="menu"
                 tabIndex={0}
                 className="btn btn-ghost lg:hidden"
               >

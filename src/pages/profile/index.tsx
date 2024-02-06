@@ -6,9 +6,9 @@ import {
 import { useGitHubQuery } from "@/hooks";
 import Image from "next/image";
 import Link from "next/link";
-import { exportAsImage } from "@/utils";
 import GitHubCalendar from "react-github-calendar";
 import { Tooltip as ReactTooltip } from "react-tooltip";
+import { exportAsImage } from "@/utils";
 
 interface Activity {
   date: string;
