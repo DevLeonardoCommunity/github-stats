@@ -3,10 +3,14 @@ import { signIn, signOut, useSession } from "next-auth/react";
 import Image from "next/image";
 import Link from "next/link";
 import { ThemeSelector } from "./ThemeSelector";
+import { closeDropdownOnItemClick } from "@/utils";
 
 export const Header = () => {
   const { data: session, status } = useSession();
-
+  const handleLogout = async () => {
+    await signOut();
+    closeDropdownOnItemClick();
+  };
   return (
     <>
       <header>
@@ -81,17 +85,17 @@ export const Header = () => {
                   tabIndex={0}
                   className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52"
                 >
-                  <li>
+                  <li onClick={closeDropdownOnItemClick}>
                     <a>
                       Settings
                       <span className="badge">Soon</span>
                     </a>
                   </li>
-                  <li>
+                  <li onClick={closeDropdownOnItemClick}>
                     <Link href={`/profile`}>Profile</Link>
                   </li>
                   <li>
-                    <a onClick={() => signOut()}>Logout</a>
+                    <a onClick={handleLogout}>Logout</a>
                   </li>
                 </ul>
               </div>

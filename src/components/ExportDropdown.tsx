@@ -1,7 +1,14 @@
 import { FC } from "react";
-import { exportAsImage } from "@/utils";
+import { exportAsImage, closeDropdownOnItemClick } from "@/utils";
+import { ExportOptions } from "@/types/export";
 
 export const ExportDropdown: FC = () => {
+  const handleExport =
+    (selector: string, option: ExportOptions, filename?: string) => () => {
+      exportAsImage(selector, option, filename);
+      closeDropdownOnItemClick();
+    };
+
   return (
     <div className="dropdown">
       <button
@@ -17,7 +24,7 @@ export const ExportDropdown: FC = () => {
         <li>
           <button
             className="btn-ghost"
-            onClick={() => exportAsImage(".grid", "download", "stats")}
+            onClick={handleExport(".grid", "download", "stats")}
           >
             Download as PNG
           </button>
@@ -25,7 +32,7 @@ export const ExportDropdown: FC = () => {
         <li>
           <button
             className="btn-ghost"
-            onClick={() => exportAsImage(".grid", "clipboard")}
+            onClick={handleExport(".grid", "clipboard")}
           >
             Copy to Clipboard
           </button>

@@ -8,7 +8,8 @@ import Image from "next/image";
 import Link from "next/link";
 import GitHubCalendar from "react-github-calendar";
 import { Tooltip as ReactTooltip } from "react-tooltip";
-import { exportAsImage } from "@/utils";
+import { ExportOptions } from "@/types/export";
+import { exportAsImage, closeDropdownOnItemClick } from "@/utils";
 
 interface Activity {
   date: string;
@@ -21,6 +22,12 @@ export default function Profile() {
   const [showActivities, setShowActivities] = useState<boolean>(false);
 
   if (!data) return "Loading...";
+
+  const handleExport =
+    (selector: string, option: ExportOptions, filename?: string) => () => {
+      exportAsImage(selector, option, filename);
+      closeDropdownOnItemClick();
+    };
 
   const selectLastHalfYear = (contributions: Activity[]) => {
     const shownMonths = 6;
@@ -52,9 +59,11 @@ export default function Profile() {
             <li>
               <button
                 className="btn-ghost"
-                onClick={() =>
-                  exportAsImage("#profile-card", "download", "profile-card")
-                }
+                onClick={handleExport(
+                  "#profile-card",
+                  "download",
+                  "profile-card"
+                )}
               >
                 Download as PNG
               </button>
@@ -62,7 +71,7 @@ export default function Profile() {
             <li>
               <button
                 className="btn-ghost"
-                onClick={() => exportAsImage("#profile-card", "clipboard")}
+                onClick={handleExport("#profile-card", "clipboard")}
               >
                 Copy to Clipboard
               </button>
