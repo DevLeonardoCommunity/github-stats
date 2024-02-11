@@ -42,3 +42,5 @@ export type User = {
     totalCount: number;
   };
 };
+
+export type RepositoryRenderFormat = "cards" | "text" | "json";

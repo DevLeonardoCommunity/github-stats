@@ -74,7 +74,7 @@ Thanks for reading and happy coding!
       <td align="center" valign="top" width="14.28%"><a href="https://github.com/K1ethoang"><img src="https://avatars.githubusercontent.com/u/88199151?v=4?s=100" width="100px;" alt="Kiet Hoang Gia"/><br /><sub><b>Kiet Hoang Gia</b></sub></a><br /><a href="https://github.com/DevLeonardoCommunity/github-stats/commits?author=K1ethoang" title="Code">💻</a></td>
     </tr>
     <tr>
-      <td align="center" valign="top" width="14.28%"><a href="https://www.biodrop.io/CBID2"><img src="https://avatars.githubusercontent.com/u/105683440?v=4?s=100" width="100px;" alt="Christine Belzie"/><br /><sub><b>Christine Belzie</b></sub></a><br /><a href="https://github.com/DevLeonardoCommunity/github-stats/pulls?q=is%3Apr+reviewed-by%3ACBID2" title="Reviewed Pull Requests">👀</a></td>
+      <td align="center" valign="top" width="14.28%"><a href="https://www.biodrop.io/CBID2"><img src="https://avatars.githubusercontent.com/u/105683440?v=4?s=100" width="100px;" alt="Christine Belzie"/><br /><sub><b>Christine Belzie</b></sub></a><br /><a href="https://github.com/DevLeonardoCommunity/github-stats/pulls?q=is%3Apr+reviewed-by%3ACBID2" title="Reviewed Pull Requests">👀</a> <a href="https://github.com/DevLeonardoCommunity/github-stats/commits?author=CBID2" title="Code">💻</a> <a href="#a11y-CBID2" title="Accessibility">️️️️♿️</a></td>
     </tr>
   </tbody>
 </table>
