@@ -3,7 +3,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { FaCodeMerge } from "react-icons/fa6";
 import { IoIosCloseCircleOutline } from "react-icons/io";
-import { GoIssueOpened } from "react-icons/go";
+import { GoGitPullRequest } from "react-icons/go";
 
 export const RepositoryContributionsCard = ({
   repository,
@@ -80,7 +80,7 @@ export const RepositoryContributionsCard = ({
                     ) : state === "CLOSED" ? (
                       <IoIosCloseCircleOutline size={18} />
                     ) : (
-                      <GoIssueOpened size={18} />
+                      <GoGitPullRequest size={18} />
                     )}
                   </span>
                 </div>
