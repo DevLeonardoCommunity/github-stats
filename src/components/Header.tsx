@@ -1,16 +1,13 @@
 import { MAIN_LOGIN_PROVIDER } from "@/pages/api/auth/[...nextauth]";
 import { signIn, signOut, useSession } from "next-auth/react";
-import { ThemeSelector, Dropdown, DropdownProps } from "@/components";
+import { ThemeSelector, Dropdown } from "@/components";
 import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/router";
-import { useMemo } from "react";
 
 export const Header = () => {
   const { data: session, status } = useSession();
   const router = useRouter();
-
-  const navDropdownItems = useNavDropdownItems();
 
   const handleLogout = async () => {
     await signOut();
@@ -21,27 +18,6 @@ export const Header = () => {
       <header>
         <div className="navbar bg-base-100">
           <div className="navbar-start">
-            <Dropdown
-              renderButton={
-                <label htmlFor="menu" className="btn btn-ghost lg:hidden">
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    className="h-5 w-5"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    stroke="currentColor"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth="2"
-                      d="M4 6h16M4 12h8m-8 6h16"
-                    />
-                  </svg>
-                </label>
-              }
-              items={navDropdownItems}
-            />
             <Link href="/" className="btn btn-ghost normal-case text-xl">
               GitHub Stats
             </Link>
@@ -112,32 +88,4 @@ export const Header = () => {
       </header>
     </>
   );
-};
-
-const useNavDropdownItems = () => {
-  const router = useRouter();
-  const { data: session, status } = useSession();
-
-  const navDropdownItems = useMemo(() => {
-    const items: DropdownProps["items"] = [
-      {
-        renderItem: "Home",
-        onClick: () => {
-          router.push("/");
-        },
-      },
-    ];
-    if (status === "authenticated") {
-      items.push({
-        renderItem: "Stats",
-        onClick: () => {
-          if (session) {
-            router.push(`/stats/${session.user.login}`);
-          }
-        },
-      });
-    }
-    return items;
-  }, [status, router, session]);
-  return navDropdownItems;
 };

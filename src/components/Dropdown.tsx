@@ -33,7 +33,7 @@ export const Dropdown: FC<DropdownProps> = ({
       <div
         tabIndex={0}
         role="button"
-        className="btn m-1 border-0 bg-transparent hover:bg-transparent"
+        className="btn m-1 border-0 p-0 bg-transparent hover:bg-transparent"
       >
         {renderButton}
       </div>
