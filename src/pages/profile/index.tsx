@@ -55,7 +55,7 @@ export default function Profile() {
         </div>
       </div>
       <div>
-        <div className="card w-96 mx-auto my-10 bg-base-100 shadow-xl h-100  ">
+        <div className="card md:w-[35rem] mx-auto  my-10 bg-base-100 shadow-xl h-100">
           <div id="profile-card" className="relative bg-base-100 rounded-2xl ">
             <div className="absolute h-[100px] bg-base-200 w-full rounded-t-2xl" />
             <figure className="px-10 pt-10">
