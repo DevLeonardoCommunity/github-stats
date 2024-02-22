@@ -1,4 +1,3 @@
-export * from "./closeDropdownOnItemClick";
 export * from "./exportAsImage";
 export * from "./exportAsJSON";
 export * from "./exportAsText";
