@@ -8,8 +8,7 @@ import Image from "next/image";
 import Link from "next/link";
 import GitHubCalendar from "react-github-calendar";
 import { Tooltip as ReactTooltip } from "react-tooltip";
-import { ExportOptions } from "@/types/export";
-import { exportAsImage, closeDropdownOnItemClick } from "@/utils";
+import { ExportDropdownButton } from "@/components";
 
 interface Activity {
   date: string;
@@ -22,12 +21,6 @@ export default function Profile() {
   const [showActivities, setShowActivities] = useState<boolean>(false);
 
   if (!data) return "Loading...";
-
-  const handleExport =
-    (selector: string, option: ExportOptions, filename?: string) => () => {
-      exportAsImage(selector, option, filename);
-      closeDropdownOnItemClick();
-    };
 
   const selectLastHalfYear = (contributions: Activity[]) => {
     const shownMonths = 6;
@@ -44,40 +37,11 @@ export default function Profile() {
 
   return (
     <div>
-      <div className="flex flex-col justify-center items-center py-10">
-        <div className="dropdown ">
-          <button
-            tabIndex={0}
-            className="btn btn-primary p-2 m-1 rounded cursor-pointer"
-          >
-            Export as image
-          </button>
-          <ul
-            tabIndex={0}
-            className="dropdown-content menu p-2 shadow bg-base-100 rounded-box w-52 z-20"
-          >
-            <li>
-              <button
-                className="btn-ghost"
-                onClick={handleExport(
-                  "#profile-card",
-                  "download",
-                  "profile-card"
-                )}
-              >
-                Download as PNG
-              </button>
-            </li>
-            <li>
-              <button
-                className="btn-ghost"
-                onClick={handleExport("#profile-card", "clipboard")}
-              >
-                Copy to Clipboard
-              </button>
-            </li>
-          </ul>
-        </div>
+      <div className="flex flex-col justify-cter items-center py-10">
+        <ExportDropdownButton
+          selector="#profile-card"
+          filename="profile-card"
+        />
         <div className="flex mx-auto">
           <label className="cursor-pointer label gap-2">
             <span className="label badge badge-primary">Activity Calendar</span>
