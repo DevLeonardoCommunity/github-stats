@@ -6,4 +6,5 @@ export * from "./FormatStatsRender";
 export * from "./RepositoryContributionsCard";
 export * from "./CardSkeleton";
 export * from "./Header";
+export * from "./ThemeSelector";
 export * from "./RootLayout";
