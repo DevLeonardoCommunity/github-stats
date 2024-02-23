@@ -1,6 +1,6 @@
 import { fireEvent, render, screen } from "@testing-library/react";
 import { describe, test, expect } from "vitest";
-import { ThemeSelector } from "@/components";
+import { ThemeSelector } from "./ThemeSelector";
 
 describe("ThemeSelector", () => {
   test("should change light Icon if click Dark mode", () => {

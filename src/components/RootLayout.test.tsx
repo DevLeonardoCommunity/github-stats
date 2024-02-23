@@ -1,5 +1,5 @@
 import { render, screen } from "@testing-library/react";
-import { RootLayout } from "@/components";
+import { RootLayout } from "./RootLayout";
 import { vi, describe, test, expect } from "vitest";
 
 vi.mock("./Header", () => ({
