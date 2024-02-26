@@ -14,7 +14,7 @@ export const ExportDropdownButton: FC<ExportDropdownButtonProps> = ({
   return (
     <Dropdown
       renderButton={
-        <button className="btn btn-primary p-2 m-1 rounded cursor-pointer">
+        <button className="btn btn-primary rounded cursor-pointer">
           Export as image
         </button>
       }
