@@ -1,6 +1,6 @@
-import { FC, ReactElement } from "react";
+import { FC, HTMLProps, ReactElement } from "react";
 
-export type DropdownProps = React.PropsWithChildren<{
+export type DropdownProps = {
   position?:
     | "dropdown-top"
     | "dropdown-bottom"
@@ -8,12 +8,12 @@ export type DropdownProps = React.PropsWithChildren<{
     | "dropdown-right";
   align?: "dropdown-end";
   renderButton: ReactElement;
-  items: (React.HTMLProps<HTMLLIElement> & {
-    ["data-testid"]?: string;
+  items: (HTMLProps<HTMLLIElement> & {
+    "data-testid"?: string;
     onClick?: () => void;
-    renderItem: string | ReactElement;
+    renderItem: ReactElement;
   })[];
-}>;
+};
 
 export const closeDropdownOnItemClick = (): void => {
   const activeElement = document.activeElement as HTMLElement | null;
@@ -41,8 +41,7 @@ export const Dropdown: FC<DropdownProps> = ({
         tabIndex={0}
         className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52"
       >
-        {items.map((item, index) => {
-          const { onClick, renderItem, ...liProps } = item;
+        {items.map(({ onClick, renderItem, ...liProps }, index) => {
           return (
             <li
               {...liProps}

@@ -42,24 +42,24 @@ export function ThemeSelector() {
       items={[
         {
           id: "light",
-          ["data-testid"]: "light-mode-option",
-          renderItem: "Light Mode",
+          "data-testid": "light-mode-option",
+          renderItem: <span>Light Mode</span>,
           onClick: () => {
             onClick("light");
           },
         },
         {
           id: "custom-dark",
-          ["data-testid"]: "dark-mode-option",
-          renderItem: "Dark Mode",
+          "data-testid": "dark-mode-option",
+          renderItem: <span>Dark Mode</span>,
           onClick: () => {
             onClick("custom-dark");
           },
         },
         {
           id: "system",
-          ["data-testid"]: "system-mode-option",
-          renderItem: "System Preference",
+          "data-testid": "system-mode-option",
+          renderItem: <span>System preference</span>,
           onClick: () => {
             onClick("system");
           },
