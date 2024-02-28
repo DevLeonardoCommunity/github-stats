@@ -1,7 +1,9 @@
 import { FC } from "react";
 import { useMemo } from "react";
-import { RepositoryContributionsCard } from "./RepositoryContributionsCard";
-import { ExportDropdown } from "./ExportDropdown";
+import {
+  ExportDropdownButton,
+  RepositoryContributionsCard,
+} from "@/components";
 import {
   PullRequestContributionsByRepository,
   RepositoryRenderFormat,
@@ -37,7 +39,7 @@ export const FormatStatsRender: FC<FormatStatsRenderProps> = ({
       case "cards":
         return (
           <>
-            <ExportDropdown />
+            <ExportDropdownButton selector=".grid" filename="stats" />
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 pb-4">
               {repositories?.map(({ repository, contributions }, i) => (
                 <RepositoryContributionsCard

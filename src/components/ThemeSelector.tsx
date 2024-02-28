@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { Dropdown } from "@/components";
 
 type ThemeOptions = "custom-dark" | "light" | "system";
 
@@ -14,10 +15,8 @@ export function ThemeSelector() {
     }
   }, []);
 
-  function onClick($event: React.MouseEvent<HTMLLIElement>) {
-    $event.stopPropagation();
-    const li = $event.currentTarget as HTMLLIElement;
-    setDocumentElement(li.id as ThemeOptions);
+  function onClick(theme: ThemeOptions) {
+    setDocumentElement(theme);
   }
 
   const setDocumentElement = (theme: ThemeOptions) => {
@@ -28,38 +27,45 @@ export function ThemeSelector() {
   const buttonIcon = getButtonIconByOption(selectedTheme);
 
   return (
-    <>
-      <div className="dropdown dropdown-bottom dropdown-end">
+    <Dropdown
+      align="dropdown-end"
+      position="dropdown-bottom"
+      renderButton={
         <label
           htmlFor="themeToggle"
-          tabIndex={0}
           className="btn btn-circle btn-ghost m-1"
           data-testid="themeSelectorButton"
         >
           {buttonIcon}
         </label>
-        <ul
-          tabIndex={0}
-          className="dropdown-content z-[1] menu p-2 shadow bg-base-100 rounded-box w-52 mt-3"
-        >
-          <li id="light" onClick={onClick}>
-            <a data-testid="light-mode-option">
-              <LightMode /> Light Mode
-            </a>
-          </li>
-          <li id="custom-dark" onClick={onClick}>
-            <a data-testid="dark-mode-option">
-              <DarkMode /> Dark Mode
-            </a>
-          </li>
-          <li id="system" onClick={onClick}>
-            <a data-testid="system-mode-option">
-              <SystemPreference /> System Preference
-            </a>
-          </li>
-        </ul>
-      </div>
-    </>
+      }
+      items={[
+        {
+          id: "light",
+          "data-testid": "light-mode-option",
+          renderItem: "Light Mode",
+          onClick: () => {
+            onClick("light");
+          },
+        },
+        {
+          id: "custom-dark",
+          "data-testid": "dark-mode-option",
+          renderItem: "Dark Mode",
+          onClick: () => {
+            onClick("custom-dark");
+          },
+        },
+        {
+          id: "system",
+          "data-testid": "system-mode-option",
+          renderItem: "System preference",
+          onClick: () => {
+            onClick("system");
+          },
+        },
+      ]}
+    />
   );
 }
 

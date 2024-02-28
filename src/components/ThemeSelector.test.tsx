@@ -1,6 +1,10 @@
 import { fireEvent, render, screen } from "@testing-library/react";
-import { describe, test, expect } from "vitest";
+import { describe, test, expect, vi } from "vitest";
 import { ThemeSelector } from "./ThemeSelector";
+
+vi.mock("next/font/google", () => ({
+  Inter: () => <div>GoogleFont</div>,
+}));
 
 describe("ThemeSelector", () => {
   test("should change light Icon if click Dark mode", () => {

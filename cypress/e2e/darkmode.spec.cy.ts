@@ -2,16 +2,16 @@ describe("DarkMode test", () => {
   beforeEach(() => {
     cy.visit("http://localhost:3000");
     cy.wait(3000);
-    cy.get('[data-testid="themeSelectorButton"]').click();
+    cy.get('data-testid="themeSelectorButton"').click();
   });
 
   it("should select light Mode", () => {
-    cy.get('[data-testid="light-mode-option"]').click();
+    cy.get('data-testid="light-mode-option"').click();
     cy.get("html").should("have.data", "theme", "light");
   });
 
   it("should select dark mode", () => {
-    cy.get('[data-testid="dark-mode-option"]').click();
+    cy.get('data-testid="dark-mode-option"').click();
     cy.get("html").should("have.data", "theme", "custom-dark");
   });
 
@@ -27,8 +27,8 @@ describe("DarkMode test", () => {
       },
     });
     cy.wait(3000);
-    cy.get('[data-testid="themeSelectorButton"]').click();
-    cy.get('[data-testid="system-mode-option"]').click();
+    cy.get('data-testid="themeSelectorButton"').click();
+    cy.get('data-testid="system-mode-option"').click();
     cy.get("html").should("have.data", "theme", "custom-dark");
   });
 });
