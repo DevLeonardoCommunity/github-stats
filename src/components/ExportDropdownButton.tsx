@@ -20,13 +20,13 @@ export const ExportDropdownButton: FC<ExportDropdownButtonProps> = ({
       }
       items={[
         {
-          renderItem: <span>Download as PNG</span>,
+          renderItem: "Download as PNG",
           onClick: () => {
             exportAsImage(selector, "download", filename);
           },
         },
         {
-          renderItem: <span>Copy to Clipboard</span>,
+          renderItem: "Copy to Clipboard",
           onClick: () => {
             exportAsImage(selector, "clipboard", filename);
           },

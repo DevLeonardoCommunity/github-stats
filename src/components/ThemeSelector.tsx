@@ -43,7 +43,7 @@ export function ThemeSelector() {
         {
           id: "light",
           "data-testid": "light-mode-option",
-          renderItem: <span>Light Mode</span>,
+          renderItem: "Light Mode",
           onClick: () => {
             onClick("light");
           },
@@ -51,7 +51,7 @@ export function ThemeSelector() {
         {
           id: "custom-dark",
           "data-testid": "dark-mode-option",
-          renderItem: <span>Dark Mode</span>,
+          renderItem: "Dark Mode",
           onClick: () => {
             onClick("custom-dark");
           },
@@ -59,7 +59,7 @@ export function ThemeSelector() {
         {
           id: "system",
           "data-testid": "system-mode-option",
-          renderItem: <span>System preference</span>,
+          renderItem: "System preference",
           onClick: () => {
             onClick("system");
           },

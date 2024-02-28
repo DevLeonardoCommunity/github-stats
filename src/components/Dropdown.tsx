@@ -1,4 +1,4 @@
-import { FC, HTMLProps, ReactElement } from "react";
+import { FC, HTMLProps, ReactElement, ReactNode } from "react";
 
 export type DropdownProps = {
   position?:
@@ -11,7 +11,7 @@ export type DropdownProps = {
   items: (HTMLProps<HTMLLIElement> & {
     "data-testid"?: string;
     onClick?: () => void;
-    renderItem: ReactElement;
+    renderItem: ReactNode;
   })[];
 };
 
