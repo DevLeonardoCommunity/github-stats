@@ -3,7 +3,7 @@ import { useSession } from "next-auth/react";
 import { useRouter } from "next/router";
 import { useGitHubPullRequests, useFilteredRepositories } from "@/hooks";
 import { CardSkeleton, FormatStatsRender, ReposFilters } from "@/components";
-import { RepositoryRenderFormat } from "@/types/github";
+import { PullRequestState, RepositoryRenderFormat } from "@/types/github";
 
 export default function Stats() {
   const { data: session } = useSession();
@@ -13,6 +13,9 @@ export default function Stats() {
   const [year, setYear] = useState<number>(baseYear);
   const [format, setFormat] = useState<RepositoryRenderFormat>("cards");
   const [searchQuery, setSearchQuery] = useState<string>("");
+  const [pullRequestState, setpullRequestState] = useState<PullRequestState>(
+    null!
+  );
   const [hideOwnRepo, setHideOwnRepo] = useState<boolean>(false);
 
   const { repositories, isLoading } = useGitHubPullRequests(
@@ -23,7 +26,8 @@ export default function Stats() {
   const filteredRepositories = useFilteredRepositories(
     repositories,
     searchQuery,
-    hideOwnRepo
+    hideOwnRepo,
+    pullRequestState
   );
 
   return (
@@ -36,6 +40,8 @@ export default function Stats() {
         </h2>
       </div>
       <ReposFilters
+        pullRequestState={pullRequestState!}
+        setpullRequestState={setpullRequestState}
         searchQuery={searchQuery}
         setSearchQuery={setSearchQuery}
         baseYear={baseYear}

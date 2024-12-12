@@ -15,7 +15,7 @@ export type PullRequestNode = {
 export type PullRequest = {
   id: string;
   title: string;
-  state: "MERGED" | "CLOSED" | "OPEN";
+  state: PullRequestState;
   url: string;
 };
 
@@ -44,3 +44,4 @@ export type User = {
 };
 
 export type RepositoryRenderFormat = "cards" | "text" | "json";
+export type PullRequestState = "MERGED" | "CLOSED" | "OPEN";
