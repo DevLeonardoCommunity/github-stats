@@ -1,9 +1,13 @@
 import { useState } from "react";
 import { useSession } from "next-auth/react";
 import { useRouter } from "next/router";
-import { useGitHubPullRequests, useFilteredRepositories } from "@/hooks";
+import { useGitHubPullRequests, useHandleStateRepositories } from "@/hooks";
 import { CardSkeleton, FormatStatsRender, ReposFilters } from "@/components";
-import { PullRequestState, RepositoryRenderFormat } from "@/types/github";
+import {
+  PullRequestState,
+  RepositoryOrder,
+  RepositoryRenderFormat,
+} from "@/types/github";
 
 export default function Stats() {
   const { data: session } = useSession();
@@ -16,6 +20,9 @@ export default function Stats() {
   const [pullRequestState, setpullRequestState] = useState<PullRequestState>(
     null!
   );
+  const [repositoriesOrder, setRepositoriesOrder] = useState<RepositoryOrder>(
+    null!
+  );
   const [hideOwnRepo, setHideOwnRepo] = useState<boolean>(false);
 
   const { repositories, isLoading } = useGitHubPullRequests(
@@ -23,11 +30,12 @@ export default function Stats() {
     login as string
   );
 
-  const filteredRepositories = useFilteredRepositories(
+  const filteredRepositories = useHandleStateRepositories(
     repositories,
     searchQuery,
     hideOwnRepo,
-    pullRequestState
+    pullRequestState,
+    repositoriesOrder
   );
 
   return (
@@ -42,6 +50,8 @@ export default function Stats() {
       <ReposFilters
         pullRequestState={pullRequestState!}
         setpullRequestState={setpullRequestState}
+        repositoriesOrder={repositoriesOrder}
+        setRepositoriesOrder={setRepositoriesOrder}
         searchQuery={searchQuery}
         setSearchQuery={setSearchQuery}
         baseYear={baseYear}

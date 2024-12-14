@@ -43,5 +43,10 @@ export type User = {
   };
 };
 
+export type RepositoryOrder =
+  | "OWNER"
+  | "REPOSITORY"
+  | "PRASCENDING"
+  | "PRDESCENDING";
 export type RepositoryRenderFormat = "cards" | "text" | "json";
 export type PullRequestState = "MERGED" | "CLOSED" | "OPEN";
