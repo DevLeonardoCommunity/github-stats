@@ -1,11 +1,15 @@
 import { useMemo } from "react";
 import { useSession } from "next-auth/react";
-import { PullRequestContributionsByRepository } from "@/types/github";
+import {
+  PullRequestContributionsByRepository,
+  PullRequestState,
+} from "@/types/github";
 
 export const useFilteredRepositories = (
   repositories: PullRequestContributionsByRepository[],
   searchQuery: string,
-  hideOwnRepo: boolean
+  hideOwnRepo: boolean,
+  pullRequestState: PullRequestState
 ) => {
   const { data: session } = useSession();
 
@@ -27,6 +31,16 @@ export const useFilteredRepositories = (
       );
     };
 
+    const filterReposByPullRequestState = (
+      repos: PullRequestContributionsByRepository[]
+    ) => {
+      return repos?.filter((repoData) =>
+        repoData.contributions.nodes.some(
+          (contribution) => contribution.pullRequest.state === pullRequestState
+        )
+      );
+    };
+
     const filterRepos = (repos: PullRequestContributionsByRepository[]) => {
       let filteredRepos = repos;
       if (!searchQuery) {
@@ -37,11 +51,16 @@ export const useFilteredRepositories = (
           ? filterOutOwnRepos(filteredReposBySearchQuery)
           : filteredReposBySearchQuery;
       }
+
+      filteredRepos = pullRequestState
+        ? filterReposByPullRequestState(filteredRepos)
+        : filteredRepos;
+
       return filteredRepos;
     };
 
     return filterRepos(repositories);
-  }, [repositories, searchQuery, hideOwnRepo, session]);
+  }, [repositories, searchQuery, hideOwnRepo, pullRequestState, session]);
 
   return filteredRepositories;
 };
