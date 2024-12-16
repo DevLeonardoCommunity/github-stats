@@ -1,11 +1,17 @@
 import { FC } from "react";
-import { PullRequestState, RepositoryRenderFormat } from "@/types/github";
+import {
+  PullRequestState,
+  RepositoryOrder,
+  RepositoryRenderFormat,
+} from "@/types/github";
 
 type ReposFiltersProps = {
   searchQuery: string;
   setSearchQuery: React.Dispatch<React.SetStateAction<string>>;
   pullRequestState: PullRequestState;
   setpullRequestState: React.Dispatch<React.SetStateAction<PullRequestState>>;
+  repositoriesOrder: RepositoryOrder;
+  setRepositoriesOrder: React.Dispatch<React.SetStateAction<RepositoryOrder>>;
   baseYear: number;
   year: number;
   setYear: React.Dispatch<React.SetStateAction<number>>;
@@ -20,6 +26,8 @@ export const ReposFilters: FC<ReposFiltersProps> = ({
   setSearchQuery,
   pullRequestState,
   setpullRequestState,
+  repositoriesOrder,
+  setRepositoriesOrder,
   baseYear,
   year,
   setYear,
@@ -45,6 +53,10 @@ export const ReposFilters: FC<ReposFiltersProps> = ({
 
   const handlePullRequestStateChange = (selectedState: PullRequestState) => {
     setpullRequestState(selectedState);
+  };
+
+  const handleRepositoriesOrderChange = (selectedOrder: RepositoryOrder) => {
+    setRepositoriesOrder(selectedOrder);
   };
 
   return (
@@ -78,7 +90,7 @@ export const ReposFilters: FC<ReposFiltersProps> = ({
               onChange={(e) => setSearchQuery(e.target.value)}
             />
           </div>
-          <div className="my-5 flex flex-col sm:items-start items-center">
+          <div className="my-5 mr-2 flex flex-col sm:items-start items-center">
             <label className="mb-2">State of PR</label>
             <select
               className="select select-bordered w-full max-w-md"
@@ -91,6 +103,23 @@ export const ReposFilters: FC<ReposFiltersProps> = ({
               <option value="OPEN">Open</option>
               <option value="MERGED">Merged</option>
               <option value="CLOSED">Closed</option>
+            </select>
+          </div>
+          <div className="my-5 flex flex-col sm:items-start items-center">
+            <label className="mb-2">Order by</label>
+            <select
+              className="select select-bordered w-full max-w-md"
+              value={repositoriesOrder}
+              onChange={(e) =>
+                handleRepositoriesOrderChange(e.target.value as RepositoryOrder)
+              }
+            >
+              <option value="OWNER">Owner</option>
+              <option value="REPOSITORY">Repository</option>
+              <option value="PRASCENDING">N° PR Ascending</option>
+              <option value="PRDESCENDING" selected>
+                N° PR Descending
+              </option>
             </select>
           </div>
         </div>
